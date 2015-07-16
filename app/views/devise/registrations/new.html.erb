@@ -1,0 +1,28 @@
+<h2>Registrieren</h2>
+
+<%= devise_error_messages! %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.bootstrap_email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <% if @validatable %>
+    <em>(Mindestens <%= @minimum_password_length %> Zeichen)</em>
+    <% end %><br />
+    <%= f.bootstrap_password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.bootstrap_password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: 'btn btn-default' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

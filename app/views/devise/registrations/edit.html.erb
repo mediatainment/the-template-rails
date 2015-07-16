@@ -1,0 +1,38 @@
+<h2><%= resource_name.to_s.humanize %> ändern</h2>
+
+<%= devise_error_messages! %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Warte auf folgende Bestätigung: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.bootstrap_password_field :password, label: '(Leer lassen, wenn keine Änderung erwünscht ist)', autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.bootstrap_password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.bootstrap_password_field :current_password, label: '(Um die Änderungen zu bestätigen, brauchen wir Dein Passwort)', autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Änderungen übernehmen", class: 'btn btn-default' %>
+  </div>
+<% end %>
+
+<h3>Account löschen</h3>
+
+<p>Unglücklich? <%= button_to "Meinen Account löschen", registration_path(resource_name), class: 'btn btn-default', data: { confirm: "Bist Du sicher? Dieser Vorgang ist unwiderruflich" }, method: :delete %></p>
+
+<%= link_to "Zurück", :back %>

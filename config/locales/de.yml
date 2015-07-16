@@ -1,0 +1,20 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  hello: "Hello world"
+  activerecord:
+    models:
+      user: User
+    errors:
+      template:
+        header:
+          one:   "1 error prohibited this %{model} from being saved"
+          other: "%{count} errors prohibited this %{model} from being saved"
+      body: "There were problems with the following fields:"
+      models:
+        user:
+          attributes:
+            email:
+              taken: "Die E-Mail Adresse wird bereits benutzt."
+              blank: "Email Feld nicht leer lassen."
