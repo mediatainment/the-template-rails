@@ -1,9 +1,10 @@
 MediatainmentProductionsTemplate::Application.routes.draw do
 
+  resources :articles
+
   resources :categories
 
   resources :roles
-
 
   devise_for :users,
              path: "",
