@@ -13,7 +13,8 @@
   <%= render partial: 'partials/errors' %>
   <%= render partial: 'navigation/language_menu' %>
   <%= render partial: 'navigation/user_menu' %>
-
+  <%= render partial: 'navigation/main_menu' %>
+  <%=  breadcrumbs separator: " &rsaquo; ", display_single_fragment: true %>
   <%= yield %>
 </div>
 

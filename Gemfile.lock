@@ -169,6 +169,8 @@ GEM
     globalize (3.1.0)
       activemodel (>= 3.1.0, < 4.0.0)
       activerecord (>= 3.1.0, < 4.0.0)
+    gretel (3.0.8)
+      rails (>= 3.2.0)
     hike (1.2.3)
     i18n (0.7.0)
     inflecto (0.0.2)
@@ -269,6 +271,7 @@ DEPENDENCIES
   fog
   friendly_id
   globalize (~> 3.1.0)
+  gretel
   jquery-rails
   meta-tags
   mysql2

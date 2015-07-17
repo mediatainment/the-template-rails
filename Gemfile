@@ -24,6 +24,8 @@ gem 'friendly_id'
 gem 'simple-navigation', '~> 4.0.3'
 # https://github.com/pdf/simple-navigation-bootstrap (renderer for bootstrap)
 gem 'simple-navigation-bootstrap'
+# https://github.com/lassebunk/gretel
+gem 'gretel'
 
 # Multilingual / Translation
 # https://github.com/globalize/globalize

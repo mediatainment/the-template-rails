@@ -2,7 +2,6 @@ MediatainmentProductionsTemplate::Application.routes.draw do
 
   resources :categories
 
-
   resources :roles
 
 
