@@ -39,4 +39,10 @@ class Ability
   def admin
     can :manage, :all
   end
+
+  # failsave when not meeting any role definition
+  def method_missing method_name
+
+  end
+
 end
