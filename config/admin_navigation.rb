@@ -28,17 +28,21 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Specify if the auto highlight feature is turned on (globally, for the whole navigation). Defaults to true
   #navigation.auto_highlight = true
-  
+
   # Specifies whether auto highlight should ignore query params and/or anchors when 
   # comparing the navigation items with the current URL. Defaults to true 
   #navigation.ignore_query_params_on_auto_highlight = true
   #navigation.ignore_anchors_on_auto_highlight = true
-  
+
   # If this option is set to true, all item names will be considered as safe (passed through html_safe). Defaults to false.
   #navigation.consider_item_names_as_safe = false
 
   # Define the primary navigation
   navigation.items do |primary|
+    primary.item :article_management, 'Article Management', articles_path, class: '', if: -> { can? :manage, Article }
+    primary.item :user_management, 'User Management', users_path, class: '', if: -> { can? :manage, User }
+    primary.item :category_management, 'Category Management', categories_path, class: '', if: -> { can? :manage, Category }
+    primary.item :role_management, 'Role Management', roles_path, class: '', if: -> { can? :manage, Role }
     # Add an item to the primary navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
     # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.
@@ -56,10 +60,6 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-
-    primary.item :user_management, 'User Management', users_path, class: '', if: -> { can? :manage, User }
-    primary.item :role_management, 'Category Management', categories_path, class: '', if: -> { can? :manage, Category }
-    primary.item :role_management, 'Role Management', roles_path, class: '', if: -> { can? :manage, Role }
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,

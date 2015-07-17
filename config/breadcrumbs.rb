@@ -6,6 +6,10 @@ crumb :categories do
   link 'Categories', categories_path
 end
 
+crumb :articles do
+  link 'Articles', articles_path
+end
+
 crumb :users do
   link 'Users', users_path
 end
@@ -17,6 +21,8 @@ end
 crumb :contact do
   link 'Kontakt', index_contact_path
 end
+
+
 
 # crumb :projects do
 #   link "Projects", projects_path
