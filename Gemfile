@@ -74,9 +74,12 @@ group :development do
   # create .env file in project root and load variables
   # https://github.com/bkeepers/dotenv
   gem 'dotenv-rails'
-
   # extended error stacktrace
   # gem 'better_errors'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
 end
 
 # To use ActiveModel has_secure_password
