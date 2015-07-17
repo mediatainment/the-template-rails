@@ -9,6 +9,9 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# better look for bootstrap-form
+ActionView::Base.field_error_proc = proc { |input, instance| input }
+
 module MediatainmentProductionsTemplate
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

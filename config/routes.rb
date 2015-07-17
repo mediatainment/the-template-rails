@@ -30,10 +30,9 @@ MediatainmentProductionsTemplate::Application.routes.draw do
 
     get 'index/home'
 
-    get 'index/contact'
+    match 'kontakt' => 'email#contact_form', as: :contact, via: [:get, :post]
 
     root to: 'index#home'
-
 
   end
 

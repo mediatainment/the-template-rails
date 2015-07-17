@@ -19,7 +19,7 @@ crumb :roles do
 end
 
 crumb :contact do
-  link 'Kontakt', index_contact_path
+  link 'Kontakt', contact_path
 end
 
 
