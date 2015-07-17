@@ -1,4 +1,7 @@
-<ul>
-  <li>DE</li>
-  <li>EN</li>
-</ul>
+<%= link_to locale: :en do %>
+    <%= image_tag 'blank.gif', class: 'flag flag-us', alt: 'English' %>
+<% end %>
+
+<%= link_to locale: :de do %>
+    <%= image_tag 'blank.gif', class: 'flag flag-de', alt: 'Deutsch' %>
+<% end %>

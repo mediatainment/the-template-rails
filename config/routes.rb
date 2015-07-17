@@ -1,35 +1,41 @@
 MediatainmentProductionsTemplate::Application.routes.draw do
 
-  resources :articles
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
 
-  resources :categories
 
-  resources :roles
+    resources :articles
 
-  devise_for :users,
-             path: "",
-             :controllers => {
-                 :registrations => "registrations",
-                 :sessions => "sessions",
-                 :confirmations => "confirmations",
-                 :passwords => "passwords"},
-             path_names: {
-                 sign_in: 'einloggen',
-                 sign_up: 'registrieren',
-                 sign_out: 'ausloggen',
-                 registration: 'registrieren',
-                 unlock: 'entsperren',
-                 confirmation: 'bestaetigen',
-                 password: 'passwort'
-             }
+    resources :categories
 
-  resources :users
+    resources :roles
 
-  get 'index/home'
+    devise_for :users,
+               path: "",
+               :controllers => {
+                   :registrations => "registrations",
+                   :sessions => "sessions",
+                   :confirmations => "confirmations",
+                   :passwords => "passwords"},
+               path_names: {
+                   sign_in: 'einloggen',
+                   sign_up: 'registrieren',
+                   sign_out: 'ausloggen',
+                   registration: 'registrieren',
+                   unlock: 'entsperren',
+                   confirmation: 'bestaetigen',
+                   password: 'passwort'
+               }
 
-  get 'index/contact'
+    resources :users
 
-  root to: 'index#home'
+    get 'index/home'
+
+    get 'index/contact'
+
+    root to: 'index#home'
+
+
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
