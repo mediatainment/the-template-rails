@@ -12,33 +12,30 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :email %><br/>
-      <%= f.text_field :email %>
+      <%= f.bootstrap_text_field :email %>
     </div>
 
     <div class="field">
-      <%= f.label :password %><br/>
-      <%= f.text_field :password %>
+      <%= f.bootstrap_password_field :password %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br/>
-      <%= f.password_field :password_confirmation %>
+      <%= f.bootstrap_password_field :password_confirmation %>
     </div>
-
-    <legend>Zusätzliche Info</legend>
-
     <div>
-      <div>
-        <%= f.label :roles %> <br>
-        <% for role in Role.all.sort %>
-            <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %><%= role.name %>
-            <br>
-        <% end %>
-      </div>
+      <%= f.label :roles %> <br>
+      <% for role in Role.all.sort %>
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+              <%= role.name %>
+            </label>
+          </div>
+          <br>
+      <% end %>
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Button", class: 'btn btn-default' %>
     </div>
 <% end %>
