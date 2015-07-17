@@ -6,7 +6,7 @@ namespace :admin do
     task :init => %w(environment) do
 
       current_admin = User.where(email: "demo@demo.com").first rescue false
-      current_admin.destroy if current_admin.exists?
+      current_admin.destroy if current_admin
 
       admin = User.new email: "demo@demo.com",
                        password: "asdfasdf1"

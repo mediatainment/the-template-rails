@@ -58,6 +58,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #
 
     primary.item :user_management, 'User Management', users_path, class: '', if: -> { can? :manage, User }
+    primary.item :role_management, 'Category Management', categories_path, class: '', if: -> { can? :manage, Category }
     primary.item :role_management, 'Role Management', roles_path, class: '', if: -> { can? :manage, Role }
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
