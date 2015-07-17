@@ -73,12 +73,12 @@ end
 group :development do
   # create .env file in project root and load variables
   # https://github.com/bkeepers/dotenv
-  gem 'dotenv-rails'
   # extended error stacktrace
   # gem 'better_errors'
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
