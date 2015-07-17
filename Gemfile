@@ -82,6 +82,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
+  gem 'faker'
 end
 
 # To use ActiveModel has_secure_password
