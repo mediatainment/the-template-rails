@@ -14,9 +14,19 @@
   <%= render partial: 'navigation/language_menu' %>
   <%= render partial: 'navigation/user_menu' %>
   <%= render partial: 'navigation/main_menu' %>
-  <%=  breadcrumbs separator: " &rsaquo; ", display_single_fragment: true %>
+  <%= breadcrumbs separator: " &rsaquo; ", display_single_fragment: true %>
   <%= yield %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(window).on('mercury:ready', function () {
+        Mercury.saveUrl = '/mercury_update';
+    });
+
+    $(window).bind('mercury:saved', function() {
+        window.location = window.location.href.replace(/\/editor\//i, '/');
+    });
+</script>
 
 </body>
 </html>

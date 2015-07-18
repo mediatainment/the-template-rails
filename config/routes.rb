@@ -2,6 +2,7 @@ MediatainmentProductionsTemplate::Application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
 
+    mount Mercury::Engine => '/'
 
     resources :articles
 
@@ -28,11 +29,11 @@ MediatainmentProductionsTemplate::Application.routes.draw do
 
     resources :users
 
-    get 'index/home'
-
+    match 'index' => 'index#index', as: :index, via: [:get]
+    put 'mercury_update' => 'index#mercury_update', as: :mercury_update
     match 'kontakt' => 'email#contact_form', as: :contact, via: [:get, :post]
 
-    root to: 'index#home'
+    root to: 'index#index'
 
   end
 

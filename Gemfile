@@ -22,10 +22,13 @@ gem 'friendly_id'
 # Simple Navigation (and breadcrumb)
 # https://github.com/codeplant/simple-navigation
 gem 'simple-navigation', '~> 4.0.3'
-# https://github.com/pdf/simple-navigation-bootstrap (renderer for bootstrap)
+# https://github.com/pdf/simple-navigation-bootstrap
+# (renderer for bootstrap)
 gem 'simple-navigation-bootstrap'
 # https://github.com/lassebunk/gretel
 gem 'gretel'
+
+gem 'mercury-rails'
 
 # Multilingual / Translation
 # https://github.com/globalize/globalize
@@ -84,6 +87,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'faker'
+  gem 'test-unit'
 end
 
 # To use ActiveModel has_secure_password
