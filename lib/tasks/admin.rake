@@ -5,10 +5,11 @@ namespace :admin do
 
     task :init => %w(environment) do
 
-      current_admin = User.where(email: "demo@demo.com").first rescue false
+      current_admin = User.where(email: "admin@admin.com").first rescue false
       current_admin.destroy if current_admin
 
-      admin = User.new email: "demo@demo.com",
+      admin = User.new username: "admin",
+                       email: "admin@admin.com",
                        password: "asdfasdf1"
 
       Role.find_or_create_by_slug('admin', name: 'admin')

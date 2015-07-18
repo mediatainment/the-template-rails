@@ -12,13 +12,13 @@
     </div>
     <div class="checkbox">
       <label>
-        <%= check_box_tag("article[published]", true, false) %>
+        <%= f.check_box(:published, checked: @article.published) %>
         Published
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <%= check_box_tag("article[featured]", true, false) %>
+        <%= f.check_box(:featured, checked: @article.featured) %>
         Featured
       </label>
     </div>

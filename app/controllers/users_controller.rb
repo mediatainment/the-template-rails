@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   load_and_authorize_resource
 
+  before_filter :skip_password_attribute, only: :update
+
   # GET /users
   # GET /users.json
   def index
@@ -83,4 +85,13 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def skip_password_attribute
+    if params[:password].blank? || params[:password_confirmation].blank?
+      params.except!(:password, :password_validation, :password_confirmation)
+    end
+  end
+
 end

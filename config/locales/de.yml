@@ -18,3 +18,7 @@ de:
             email:
               taken: "Die E-Mail Adresse wird bereits benutzt."
               blank: "Email Feld nicht leer lassen."
+            password:
+              blank: "Passwort darf nicht leer bleiben"
+            username:
+              blank: "Username darf nicht leer bleiben"
