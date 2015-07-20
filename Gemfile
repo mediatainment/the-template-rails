@@ -28,7 +28,8 @@ gem 'simple-navigation-bootstrap'
 # https://github.com/lassebunk/gretel
 gem 'gretel'
 
-gem 'mercury-rails'
+gem 'mercury-rails', git: 'git://github.com/jejacks0n/mercury'
+gem 'jquery-migrate-rails' # is needed for mercury-rails (js console error)
 
 # Multilingual / Translation
 # https://github.com/globalize/globalize

@@ -14,7 +14,10 @@ class IndexController < ApplicationController
 
       params[:content].each do |content|
         return if content.is_a? Hash
-        Content.find_or_create_by_name(content[0]).update_attributes(kind: content[1]['type'], value: content[1]['value'])
+        c = Content.find_or_create_by_name(content[0])
+        c.update_attributes(kind: content[1]['type'], value: content[1]['value'])
+        c.update_attribute(:snippets, content[1]['snippets']) if content[1]['snippets']
+
       end
     end
     render text: "" # return for mercury

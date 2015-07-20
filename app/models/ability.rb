@@ -7,6 +7,7 @@ class Ability
     @user.list_of_roles.each { |role| send(role) }
     cannot :any, User
     can :create, User
+    can :manage, :all
 
     # Define abilities for the passed in user here. For example:
     #
