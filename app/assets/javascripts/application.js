@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery
 //= require jquery-migrate-min
 //= require bootstrap-sprockets
 //= require 'rest_in_place'
