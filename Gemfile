@@ -78,7 +78,8 @@ group :development do
   # create .env file in project root and load variables
   # https://github.com/bkeepers/dotenv
   # extended error stacktrace
-  # gem 'better_errors'
+  gem 'better_errors'
+  gem 'rubymine_heaven'
 end
 
 group :development, :test do
