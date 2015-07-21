@@ -46,6 +46,7 @@ gem 'cancancan'
 # FILEUPLOAD (Carrierwave)
 # https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
+gem 'mini_magick'
 
 # https://github.com/fog/fog
 gem 'fog'
@@ -79,7 +80,7 @@ group :development do
   # https://github.com/bkeepers/dotenv
   # extended error stacktrace
   gem 'better_errors'
-  gem 'rubymine_heaven'
+  #gem 'rubymine_heaven'
 end
 
 group :development, :test do

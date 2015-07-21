@@ -225,6 +225,7 @@ GEM
     meta-tags (2.0.0)
       actionpack (>= 3.0.0)
     mime-types (1.25.1)
+    mini_magick (4.2.4)
     mini_portile (0.6.2)
     multi_json (1.11.2)
     multi_test (0.1.2)
@@ -286,8 +287,6 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    rubymine_heaven (0.0.3)
-      rails (>= 3.0.0)
     sass (3.4.16)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -344,13 +343,13 @@ DEPENDENCIES
   jquery-rails
   mercury-rails!
   meta-tags
+  mini_magick
   mysql2
   puma
   rails (= 3.2.22)
   rename
   rest_in_place
   rspec-rails (~> 3.0)
-  rubymine_heaven
   sass-rails (~> 3.2.3)
   simple-navigation (~> 4.0.3)
   simple-navigation-bootstrap
