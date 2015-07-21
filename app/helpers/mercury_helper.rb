@@ -3,14 +3,24 @@ module MercuryHelper
   # renders a mercury dynamic content
   # kind can be :full, :simple, :markdown, :snippets, :image
   def make_mercury(id, which_tag=:div, kind=:simple)
-    content = Content.find_or_create_by_name(id)
-    content_tag(which_tag, id: id, data: {mercury: kind.to_s, contenteditable: 'true'}) do
-      render_with_snippet(content).html_safe
+    content = Content.find_or_create_by_name(localize_id(id))
+    render_content_tag(content, id, kind, which_tag)
+  end
+
+
+  def render_content_tag(content, id, kind, which_tag)
+    content_tag(which_tag, id: localize_id(id), data: {mercury: kind.to_s, contenteditable: 'true'}) do
+      parse_snippets(content).html_safe
     end.html_safe
   end
 
+  # returns id-language
+  def localize_id(id)
+    id + "-" + I18n.locale.to_s
+  end
+
   # parses snippets and replace it in text
-   def render_with_snippet(content)
+   def parse_snippets(content)
      snippet_regex = /\[snippet_\d+\/*\d*\]/
     if content.value =~ snippet_regex
       content.value.gsub(snippet_regex) do |txt|
