@@ -352,7 +352,8 @@ window.Mercury = {
     //
     // When loading a given page, you may want to tweak this regex.  It's to allow the url to differ from the page
     // you're editing, and the url at which you access it.
-    editorUrlRegEx: /([http|https]:\/\/.[^\/]*)\/editor\/?(.*)/i,
+      //             ([http|https]:\/\/.[^\/]*)(?:\/.*)?\/editor\/?(.*)
+    editorUrlRegEx: /([http|https]:\/\/.[^\/]*)(?:\/.*)?\/editor\/?(.*)/i,
 
 
     // ## Hijacking Links & Forms

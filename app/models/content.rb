@@ -2,6 +2,9 @@ class Content < ActiveRecord::Base
   include FriendlyId
 
   attr_accessible :name, :kind, :value, :snippets
+  before_validation :default_values
+
+  validates_presence_of :value, :kind, :name
 
   friendly_id :name
 
@@ -12,4 +15,11 @@ class Content < ActiveRecord::Base
       snippets[txt]
     end
   end
+
+  private
+
+  def default_values
+    self.value ||= "Dummy Text"
+  end
+
 end

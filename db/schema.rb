@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150720150527) do
+ActiveRecord::Schema.define(:version => 20150721174528) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20150720150527) do
 
   create_table "contents", :force => true do |t|
     t.string   "name"
-    t.text     "value"
+    t.text     "value",      :limit => 16777215
     t.string   "kind"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "slug"
     t.string   "snippets"
   end

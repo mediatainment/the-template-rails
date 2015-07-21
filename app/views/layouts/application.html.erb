@@ -12,7 +12,7 @@
 <div class="container">
   <%= render partial: 'partials/errors' %>
   <%= render partial: 'navigation/language_menu' %>
-  <%= render partial: 'navigation/user_menu' %>
+  <%= render partial: 'navigation/admin_menu' if current_user && current_user.admin? %>
   <%= render partial: 'navigation/main_menu' %>
   <%= breadcrumbs separator: " &rsaquo; ", display_single_fragment: true %>
   <%= yield %>
@@ -20,7 +20,7 @@
 
 <script type="text/javascript" charset="utf-8">
     $(window).on('mercury:ready', function () {
-        Mercury.saveUrl = '/mercury_update';
+        Mercury.saveUrl = '/mercury/update';
     });
 
     $(window).bind('mercury:saved', function() {

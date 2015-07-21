@@ -7,7 +7,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
   navigation.items do |primary|
     primary.dom_class = 'nav nav-pills'
-    primary.item :admin, 'Admin', "#", class: 'special', if: -> { current_user && current_user.admin? }
+    primary.item :admin, 'Admin', mercury_edit_path, class: 'special', if: -> { current_user && current_user.admin? }
     primary.item :index, 'Home', index_path
     primary.item :contact, 'Kontakt', contact_path
     primary.item :logout, 'Ausloggen', destroy_user_session_path, if: -> { current_user }
