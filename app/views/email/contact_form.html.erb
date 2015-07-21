@@ -4,15 +4,15 @@
 
 <%= form_tag contact_path, method: :post do %>
     <div class="form-group">
-      <%= label_tag :contact, 'Betreff' %>
+      <%= label_tag :contact, 'Subject' %>
       <%= text_field "contact[title]", :title, id: 'contact-title', class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :content, 'Anfragetext' %>
+      <%= label_tag :content, 'Message' %>
       <%= text_area "contact[content]", :content, class: 'form-control', rows: 15 %>
     </div>
 
-    <%= button_tag 'Abschicken', class: 'btn btn-default' %>
+    <%= button_tag 'Submit', class: 'btn btn-default' %>
 
 <% end %>

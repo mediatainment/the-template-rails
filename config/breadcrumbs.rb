@@ -19,10 +19,8 @@ crumb :roles do
 end
 
 crumb :contact do
-  link 'Kontakt', contact_path
+  link 'Contact', contact_path
 end
-
-
 
 # crumb :projects do
 #   link "Projects", projects_path
