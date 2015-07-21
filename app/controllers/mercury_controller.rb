@@ -13,7 +13,7 @@ class MercuryController < ActionController::Base
 
       params[:content].each do |content|
         return if content.is_a? Hash
-        c = Content.find_or_create_by_name(content[0])
+        c = MercuryContent.find_or_create_by_name(content[0])
         c.update_attributes(kind: content[1]['type'], value: content[1]['value'])
         c.update_attribute(:snippets, content[1]['snippets']) if content[1]['snippets']
 

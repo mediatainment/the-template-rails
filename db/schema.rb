@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150721174528) do
+ActiveRecord::Schema.define(:version => 20150721190024) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -45,18 +45,6 @@ ActiveRecord::Schema.define(:version => 20150721174528) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "contents", :force => true do |t|
-    t.string   "name"
-    t.text     "value",      :limit => 16777215
-    t.string   "kind"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.string   "slug"
-    t.string   "snippets"
-  end
-
-  add_index "contents", ["slug"], :name => "index_contents_on_slug", :unique => true
-
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
     t.integer  "sluggable_id",                 :null => false
@@ -67,6 +55,19 @@ ActiveRecord::Schema.define(:version => 20150721174528) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "mercury_contents", :force => true do |t|
+    t.string   "name"
+    t.text     "value",      :limit => 16777215
+    t.string   "kind"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "slug"
+    t.string   "snippets"
+  end
+
+  add_index "mercury_contents", ["name"], :name => "index_mercury_contents_on_name"
+  add_index "mercury_contents", ["slug"], :name => "index_contents_on_slug", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"

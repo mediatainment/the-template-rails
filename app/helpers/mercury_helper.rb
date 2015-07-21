@@ -3,7 +3,7 @@ module MercuryHelper
   # renders a mercury dynamic content
   # kind can be :full, :simple, :markdown, :snippets, :image
   def make_mercury(id, which_tag=:div, kind=:simple)
-    content = Content.find_or_create_by_name(localize_id(id))
+    content = MercuryContent.find_or_create_by_name(localize_id(id))
     render_content_tag(content, id, kind, which_tag)
   end
 

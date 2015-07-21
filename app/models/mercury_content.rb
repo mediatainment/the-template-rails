@@ -1,4 +1,4 @@
-class Content < ActiveRecord::Base
+class MercuryContent < ActiveRecord::Base
   include FriendlyId
 
   attr_accessible :name, :kind, :value, :snippets
