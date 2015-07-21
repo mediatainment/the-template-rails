@@ -39,6 +39,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Define the primary navigation
   navigation.items do |primary|
+    primary.item :admin, 'Editor', mercury_edit_path, class: 'special', if: -> { current_user && current_user.admin? }
     primary.item :article_management, 'Article Management', articles_path, class: '', if: -> { can? :manage, Article }
     primary.item :user_management, 'User Management', users_path, class: '', if: -> { can? :manage, User }
     primary.item :category_management, 'Category Management', categories_path, class: '', if: -> { can? :manage, Category }
