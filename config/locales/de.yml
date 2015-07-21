@@ -22,3 +22,12 @@ de:
               blank: "Passwort darf nicht leer bleiben"
             username:
               blank: "Username darf nicht leer bleiben"
+  article_management: "Artikel verwalten"
+  user_management: "Benutzer verwalten"
+  category_management: "Kategorien verwalten"
+  role_management: "Rollen verwalten"
+  home: "Home"
+  contact: "Kontakt"
+  logout: "Ausloggen"
+  login: "Einloggen"
+  register: "Registrieren"

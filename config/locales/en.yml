@@ -17,3 +17,12 @@ de:
           attributes:
             email:
               taken: "This email has already taken."
+  article_management: "Article management"
+  user_management: "User management"
+  category_management: "Category management"
+  role_management: "Role management"
+  home: "Home"
+  contact: "Contact"
+  logout: "Logout"
+  login: "Login"
+  register: "Register"

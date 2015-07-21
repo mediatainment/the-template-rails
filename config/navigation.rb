@@ -7,11 +7,11 @@ SimpleNavigation::Configuration.run do |navigation|
 
   navigation.items do |primary|
     primary.dom_class = 'nav nav-pills'
-    primary.item :index, 'Home', index_path
-    primary.item :contact, 'Contact', contact_path
-    primary.item :logout, 'Logout', destroy_user_session_path, if: -> { current_user }
-    primary.item :login, 'Login', new_user_session_path, options: {method: :get}, unless: -> { current_user }
-    primary.item :register, 'Register', new_user_registration_path, options: {method: :get}, unless: -> { current_user }
+    primary.item :index, t('home'), index_path
+    primary.item :contact, t('contact'), contact_path
+    primary.item :logout, t('logout'), destroy_user_session_path, if: -> { current_user }
+    primary.item :login, t('login'), new_user_session_path, options: {method: :get}, unless: -> { current_user }
+    primary.item :register, t('register'), new_user_registration_path, options: {method: :get}, unless: -> { current_user }
 
     # Specify a custom renderer if needed.
     # The default renderer is SimpleNavigation::Renderer::List which renders HTML lists.

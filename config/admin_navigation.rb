@@ -40,10 +40,10 @@ SimpleNavigation::Configuration.run do |navigation|
   # Define the primary navigation
   navigation.items do |primary|
     primary.item :admin, 'Editor', mercury_edit_path, class: 'special', if: -> { current_user && current_user.admin? }
-    primary.item :article_management, 'Article Management', articles_path, class: '', if: -> { can? :manage, Article }
-    primary.item :user_management, 'User Management', users_path, class: '', if: -> { can? :manage, User }
-    primary.item :category_management, 'Category Management', categories_path, class: '', if: -> { can? :manage, Category }
-    primary.item :role_management, 'Role Management', roles_path, class: '', if: -> { can? :manage, Role }
+    primary.item :article_management, t('article_management'), articles_path, class: '', if: -> { can? :manage, Article }
+    primary.item :user_management, t('user_management'), users_path, class: '', if: -> { can? :manage, User }
+    primary.item :category_management, t('category_management'), categories_path, class: '', if: -> { can? :manage, Category }
+    primary.item :role_management, t('role_management'), roles_path, class: '', if: -> { can? :manage, Role }
     # Add an item to the primary navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
     # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.
