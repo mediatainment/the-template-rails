@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150723172915) do
+ActiveRecord::Schema.define(:version => 20150723203141) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(:version => 20150723172915) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.string   "slug"
-    t.string   "snippets"
+    t.text     "snippets"
     t.text     "data"
     t.string   "settings"
+    t.integer  "width"
+    t.integer  "height"
   end
 
   add_index "mercury_contents", ["name"], :name => "index_mercury_contents_on_name"

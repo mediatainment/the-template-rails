@@ -51,6 +51,34 @@ Generate Admin
 
     admin:rescue
 
+Mercury Content
+---
+
+In order to be able to make inplace editing most efficient, we use Mercury.
+
+We modified mercury, so you can use a specific view_helper in the view, give it an ```#id```, and optional parameters and the tag is doing the rest.
+ 
+     <%= make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false) %>
+     
+Possible kind/types of mercury tags are:
+
+* :simple 
+    * simple unformatted text field (default)
+    * example ```make_mercury("my-dom-id")```
+    * example ```make_mercury("my-dom-id", :simple, :p)``` with "p"-tag
+    * example ```make_mercury("my-dom-id", :simple, :p, true)``` with "p"-tag and translation
+* :full
+    * full editable content (html, snippets, images)
+    * example ```make_mercury('my-dom-id', :full)```
+* :image  
+    * image tag (drag and drop)
+    * example ```make_mercury("my-dom-id", :image)```
+    * example ```make_mercury('my-dom-id', :image, nil, false, '100x500')```
+
+* :snippets
+    * allows only to put in snippets (n.times)
+    * example ```make_mercury("my-dom-id", :snippets)```
+
 Authentication
 ---
 

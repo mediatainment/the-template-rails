@@ -3,7 +3,7 @@ class MercuryContent < ActiveRecord::Base
 
   self.inheritance_column = nil # to use :data as column_name
 
-  attr_accessible :name, :type, :value, :snippets, :data, :settings
+  attr_accessible :name, :type, :value, :snippets, :data, :settings, :width, :height
   before_validation :default_values
 
   validates_presence_of :value, unless: -> (mc) { mc.type == 'image' }

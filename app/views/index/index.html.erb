@@ -1,13 +1,11 @@
 <div class="jumbotron">
-  <%= raw make_mercury('jumbotron-title', :h1) %>
-  <%= make_mercury('jumbotron-subline', :p, :full) %>
-  <%= mercury_image_tag('jumbotron-image') %>
+  <%= make_mercury('jumbotron-title', :snippets) %>
 
   <p><%= link_to 'Register Now', new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
 
   <script type="application/javascript">
       jQuery(window).bind('mercury:ready', function () {
-          console.log("we are ready");
+
       });
   </script>
 </div>
