@@ -1,15 +1,23 @@
 module MercuryHelper
 
   # renders a mercury dynamic content
-  # kind can be :full, :simple, :markdown, :snippets, :image
-  def make_mercury(id, which_tag=:div, kind=:simple)
-    content = MercuryContent.find_or_create_by_name(localize_id(id))
-    render_content_tag(content, id, kind, which_tag)
+  # type can be :full, :simple, :markdown, :snippets, :image
+  def make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false)
+    id = localize_id(id) if i18n
+    content = MercuryContent.find_or_create_by_name_and_type(id, kind)
+    if kind == :image
+      mercury_image_tag(content)
+    else
+      render_snippets(content, id, kind, surrounded_tag)
+    end
   end
 
+  def mercury_image_tag(content)
+    image_tag content.settings[:src], id: content.name, data: {mercury: content.type, contenteditable: 'true'}, alt: content.name
+  end
 
-  def render_content_tag(content, id, kind, which_tag)
-    content_tag(which_tag, id: localize_id(id), data: {mercury: kind.to_s, contenteditable: 'true'}) do
+  def render_snippets(content, id, type, which_tag)
+    content_tag(which_tag, id: id, data: {mercury: type.to_s, contenteditable: 'true'}) do
       parse_snippets(content).html_safe
     end.html_safe
   end
@@ -20,8 +28,8 @@ module MercuryHelper
   end
 
   # parses snippets and replace it in text
-   def parse_snippets(content)
-     snippet_regex = /\[snippet_\d+\/*\d*\]/
+  def parse_snippets(content)
+    snippet_regex = /\[snippet_\d+\/*\d*\]/
     if content.value =~ snippet_regex
       content.value.gsub(snippet_regex) do |txt|
         cleaned_snippet = txt.delete "[]" # delete brackets

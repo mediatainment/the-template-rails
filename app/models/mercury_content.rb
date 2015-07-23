@@ -1,14 +1,19 @@
 class MercuryContent < ActiveRecord::Base
   include FriendlyId
 
-  attr_accessible :name, :kind, :value, :snippets
+  self.inheritance_column = nil # to use :data as column_name
+
+  attr_accessible :name, :type, :value, :snippets, :data, :settings
   before_validation :default_values
 
-  validates_presence_of :value, :kind, :name
+  validates_presence_of :value, unless: -> (mc) { mc.type == 'image' }
+  validates_presence_of :type, :name
 
   friendly_id :name
 
   serialize :snippets, Hash
+  serialize :data, Hash
+  serialize :settings, Hash
 
   def extract_params
     value.gsub!(/\[snippet_\d+\/\d*\]/).with_index do |txt, idx|
@@ -19,7 +24,8 @@ class MercuryContent < ActiveRecord::Base
   private
 
   def default_values
-    self.value ||= "Dummy Text"
+    self.value ||= " "
   end
+
 
 end

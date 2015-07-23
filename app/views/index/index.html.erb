@@ -1,6 +1,7 @@
 <div class="jumbotron">
   <%= raw make_mercury('jumbotron-title', :h1) %>
-  <%= make_mercury('jumbotron-subline', :p, :full).html_safe %>
+  <%= make_mercury('jumbotron-subline', :p, :full) %>
+  <%= mercury_image_tag('jumbotron-image') %>
 
   <p><%= link_to 'Register Now', new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
 

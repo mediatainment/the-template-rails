@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150721191721) do
+ActiveRecord::Schema.define(:version => 20150723172915) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -59,21 +59,28 @@ ActiveRecord::Schema.define(:version => 20150721191721) do
   create_table "mercury_contents", :force => true do |t|
     t.string   "name"
     t.text     "value",      :limit => 16777215
-    t.string   "kind"
+    t.string   "type"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.string   "slug"
     t.string   "snippets"
+    t.text     "data"
+    t.string   "settings"
   end
 
   add_index "mercury_contents", ["name"], :name => "index_mercury_contents_on_name"
   add_index "mercury_contents", ["slug"], :name => "index_contents_on_slug", :unique => true
 
   create_table "mercury_images", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "name"
+    t.string   "image"
     t.string   "image_url"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "mercury_images", ["name"], :name => "index_mercury_images_on_name"
