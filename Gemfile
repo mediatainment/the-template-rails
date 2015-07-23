@@ -81,6 +81,7 @@ group :development do
   # extended error stacktrace
   gem 'better_errors'
   #gem 'rubymine_heaven'
+  gem 'meta_request'
 end
 
 group :development, :test do
