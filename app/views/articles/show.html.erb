@@ -1,34 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b><%= t('title') %>:</b>
   <%= @article.title %>
 </p>
 
 <p>
-  <b>Subtitle:</b>
+  <b><%= t('subtitle') %>:</b>
   <%= @article.subtitle %>
 </p>
 
 <p>
-  <b>Content:</b>
+  <b><%= t('content') %>:</b>
   <%= @article.content %>
 </p>
 
 <p>
-  <b>Published:</b>
+  <b><%= t('published') %>:</b>
   <%= @article.published %>
 </p>
 
 <p>
-  <b>Featured:</b>
+  <b><%= t('featured') %>:</b>
   <%= @article.featured %>
 </p>
 
 <p>
-  <b>Meta description:</b>
+  <b><%= t('meta_description') %>:</b>
   <%= @article.meta_description %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-default' %> |
-<%= link_to 'Back', articles_path, class: 'btn btn-default' %>
+<%= link_to t('edit'), edit_article_path(@article), class: 'btn btn-default' %> |
+<%= link_to t('back'), articles_path, class: 'btn btn-default' %>

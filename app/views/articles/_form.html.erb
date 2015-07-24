@@ -2,30 +2,30 @@
     <%= errors_for @article %>
 
     <div class="field">
-      <%= f.bootstrap_text_field :title %>
+      <%= f.bootstrap_text_field :title, label: t('title') %>
     </div>
     <div class="field">
-      <%= f.bootstrap_text_field :subtitle %>
+      <%= f.bootstrap_text_field :subtitle, label: t('subtitle') %>
     </div>
     <div class="field">
-      <%= f.bootstrap_text_area :content %>
+      <%= f.bootstrap_text_area :content, label: t('content') %>
     </div>
     <div class="checkbox">
       <label>
         <%= f.check_box(:published, checked: @article.published) %>
-        Published
+        <%= t('published') %>
       </label>
     </div>
     <div class="checkbox">
       <label>
         <%= f.check_box(:featured, checked: @article.featured) %>
-        Featured
+        <%= t('featured') %>
       </label>
     </div>
     <div class="field">
-      <%= f.bootstrap_text_field :meta_description %>
+      <%= f.bootstrap_text_field :meta_description, label: t('meta_description') %>
     </div>
     <div class="actions">
-      <%= f.submit "Submit", class: 'btn btn-default' %>
+      <%= f.submit t('submit'), class: 'btn btn-default' %>
     </div>
 <% end %>

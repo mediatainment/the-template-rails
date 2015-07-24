@@ -1,0 +1,7 @@
+<p>Hello <%= @resource.email %>!</p>
+
+<p>Your account is locked because of too many wrong login attempts.</p>
+
+<p>To activate your account again, click the link below:</p>
+
+<p><%= link_to t('devise.unlocks.unlock_link'), unlock_url(@resource, unlock_token: @token) %></p>

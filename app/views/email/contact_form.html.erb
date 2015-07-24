@@ -1,18 +1,18 @@
 <% breadcrumb :contact %>
 
-<h1>Get in Touch</h1>
+<h1><%= t('get_in_touch') %></h1>
 
 <%= form_tag contact_path, method: :post do %>
     <div class="form-group">
-      <%= label_tag :contact, 'Subject' %>
+      <%= label_tag :contact, t('contact') %>
       <%= text_field "contact[title]", :title, id: 'contact-title', class: 'form-control' %>
     </div>
 
     <div class="form-group">
-      <%= label_tag :content, 'Message' %>
+      <%= label_tag :content, t('message') %>
       <%= text_area "contact[content]", :content, class: 'form-control', rows: 15 %>
     </div>
 
-    <%= button_tag 'Submit', class: 'btn btn-default' %>
+    <%= button_tag t('submit'), class: 'btn btn-default' %>
 
 <% end %>

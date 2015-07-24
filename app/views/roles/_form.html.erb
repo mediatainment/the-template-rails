@@ -2,9 +2,9 @@
     <%= errors_for @role %>
 
     <div class="field">
-      <%= f.bootstrap_text_field :name %>
+      <%= f.bootstrap_text_field :name, label: t('name') %>
     </div>
     <div class="actions">
-      <%= f.submit "Submit", class: 'btn btn-default' %>
+      <%= f.submit t('submit'), class: 'btn btn-default' %>
     </div>
 <% end %>

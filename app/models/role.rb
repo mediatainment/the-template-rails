@@ -1,7 +1,6 @@
 class Role < ActiveRecord::Base
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
 
   attr_accessible :name, :roles, :role_id
 
@@ -10,6 +9,8 @@ class Role < ActiveRecord::Base
   validates_presence_of :name
   before_destroy :do_not_change_admin_role
   before_update :do_not_change_admin_role
+
+  friendly_id :name, use: :slugged
 
   private
 

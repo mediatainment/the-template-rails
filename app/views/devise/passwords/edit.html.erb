@@ -7,15 +7,15 @@
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
-    <%= f.bootstrap_password_field :password, label: 'Neues Passwort', autofocus: true, autocomplete: "off" %>
+    <%= f.bootstrap_password_field :password, label: t('new_password'), autofocus: true, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.password_field :password_confirmation, label: 'Passwort wiederholen', autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, label: t('confirm_password'), autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Passwort ändern", class: 'btn btn-default' %>
+    <%= f.submit t('change_password'), class: 'btn btn-default' %>
   </div>
 <% end %>
 

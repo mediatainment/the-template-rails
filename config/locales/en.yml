@@ -1,7 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-de:
+en:
   hello: "Hello world"
   activerecord:
     models:
@@ -16,7 +16,12 @@ de:
         user:
           attributes:
             email:
-              taken: "This email has already taken."
+              taken: "This Email is already taken."
+              blank: "Email must be given."
+            password:
+              blank: "Password can't be blank."
+            username:
+              blank: "Username can't be blank."
   article_management: "Article management"
   user_management: "User management"
   category_management: "Category management"
@@ -26,3 +31,47 @@ de:
   logout: "Logout"
   login: "Login"
   register: "Register"
+  submit: "Submit"
+  message: "Message"
+  articles: "Articles"
+  users: "Users"
+  roles: "Roles"
+  contact_form_submission: "Contact form submission"
+  editor: "Editor"
+  email_sent_successfully: "Thank you, email sent successfully."
+  sign_up: "Sign Up"
+  password: "Password"
+  new_password: "New password"
+  confirm_password: "Password confirmation"
+  change_password: "Change password"
+  keep_empty_for_no_change: "(Keep empty if no changes should be saved)"
+  to_confirm_we_need_your_password: "To confirm we need your password"
+  save_changes: "Save changes"
+  destroy_my_account: "Destroy my account"
+  back: "Back"
+  email: "Email"
+  unhappy: "Unhappy"
+  are_you_sure_destroy_account: "Are you sure? This action could not be reverted!"
+  edit_account: "Edit account"
+  get_in_touch: "Get in touch"
+  error: "Error"
+  info: "Info"
+  name: "Name"
+  edit: "edit"
+  role: "role"
+  new_resource: "new %{resource}"
+  show: "show"
+  destroy: "destroy"
+  user: "user"
+  username: "username"
+  password_confirmation: "Password confirmation"
+  title: "title"
+  subtitle: "Subtitle"
+  content: "content"
+  published: "published"
+  featured: "Featured"
+  meta_description: "Meta description"
+  article: "Article"
+  are_you_sure: "Are you sure?"
+  edit_resource: "edit %{resource}"
+  category: "category"

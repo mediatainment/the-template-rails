@@ -16,13 +16,12 @@ MediatainmentProductionsTemplate::Application.routes.draw do
                    :confirmations => "confirmations",
                    :passwords => "passwords"},
                path_names: {
-                   sign_in: 'einloggen',
-                   sign_up: 'registrieren',
-                   sign_out: 'ausloggen',
-                   registration: 'registrieren',
-                   unlock: 'entsperren',
-                   confirmation: 'bestaetigen',
-                   password: 'passwort'
+                   sign_in: 'login',
+                   sign_up: 'register',
+                   sign_out: 'logout',
+                   unlock: 'unlock',
+                   confirmation: 'confirm',
+                   password: 'password'
                }
 
     resources :users
@@ -36,7 +35,7 @@ MediatainmentProductionsTemplate::Application.routes.draw do
     get '/editor(/*requested_uri)' => "mercury#edit", :as => :mercury_editor
     scope '/mercury' do
       put 'update', to: 'mercury#update', as: :mercury_update
-      resources	:images, :only => [:create,:destroy]
+      resources :images, :only => [:create, :destroy]
       get ':type/:resource', to: "mercury#resource"
       match 'snippets/:name/options', to: "mercury#snippet_options", :via => [:get, :post]
       match 'snippets/:name/preview', to: "mercury#snippet_preview", :via => [:get, :post]

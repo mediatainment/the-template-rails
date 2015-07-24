@@ -1,8 +1,7 @@
 class ImagesController < MercuryController
 
+  load_and_authorize_resource
 
-  #load_and_authorize_resource
-  skip_authorization_check
   respond_to :json
 
   def create

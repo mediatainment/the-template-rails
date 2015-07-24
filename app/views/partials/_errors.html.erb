@@ -2,7 +2,7 @@
     <div class="alert alert-error alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button>
-      <strong>Error!</strong>
+      <strong><%= t('error') %></strong>
       <ul>
         <% errors.full_messages.each do |message| %>
             <li> <%= message %> </li>
@@ -17,7 +17,7 @@
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span></button>
 
-      <strong>Info!</strong>
+      <strong><%= t('info') %>!</strong>
 
       <ul>
         <li><%= notice %></li>

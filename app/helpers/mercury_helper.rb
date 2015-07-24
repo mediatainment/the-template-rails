@@ -12,10 +12,12 @@ module MercuryHelper
       end
       mercury_image_tag(content)
     else
-      render_snippets(content, id, kind, surrounded_tag)
+      render_mercury_tag(content, id, kind, surrounded_tag)
     end
   end
 
+  # renders a mercury image tag
+  # use make_mercury for creation
   def mercury_image_tag(content)
     image_tag content.settings[:src], id: content.name,
               data: {mercury: content.type, contenteditable: 'true'},
@@ -24,7 +26,9 @@ module MercuryHelper
               height: content.height
   end
 
-  def render_snippets(content, id, type, which_tag)
+  # renders a mercury tag
+  # use make_mercury for creation
+  def render_mercury_tag(content, id, type, which_tag)
     content_tag(which_tag, id: id, data: {mercury: type.to_s, contenteditable: 'true'}) do
       parse_snippets(content).html_safe
     end.html_safe

@@ -1,12 +1,13 @@
 class MercuryController < ActionController::Base
   include ::Mercury::Authentication
 
-  #load_and_authorize_resource
-  skip_authorization_check
-  protect_from_forgery
-  before_filter :authenticate, :only => :edit
-  layout false
+  load_and_authorize_resource
 
+  protect_from_forgery
+
+  before_filter :authenticate, :only => :edit
+
+  layout false
 
   def update
     if params[:content]
@@ -20,7 +21,7 @@ class MercuryController < ActionController::Base
 
       end
     end
-    render text: "" # return for mercury  end
+    render text: "" # return for mercury
   end
 
   def edit

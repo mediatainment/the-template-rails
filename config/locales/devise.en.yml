@@ -6,6 +6,8 @@ en:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      submit: "Resend confirmation email"
+      account: "Confirm account now"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -32,6 +34,8 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      change: "Change my password"
+      submit: "Send reset instruction"
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -48,6 +52,16 @@ en:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      unlock_link: "Unlock account now"
+      title: "Unlock account"
+      submit: "Send unlock instructions"
+    forgot_password: "Forgot password?"
+    receive_confirmation: "Resend confirmation instructions"
+    new_unlock_mail: "Resend unlock mail"
+    login_with_provider: "Login with %{provider}"
+    waiting_for_confirmation_for_email: "Waiting to confirm email: %{email}"
+    session:
+      stay_logged_in: "Stay logged in"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
@@ -58,3 +72,5 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  contact: "Contact"
+  home: "Home"

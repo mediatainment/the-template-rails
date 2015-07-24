@@ -6,9 +6,8 @@ class EmailController < ApplicationController
     if request.post?
       contact = params[:contact]
       if contact && contact[:content] && contact[:title]
-       flash[:notice] = 'Vielen Dank, Ihre Anfrage wurde versendet.' if ContactMailer.contact_email(contact).deliver
+       flash[:notice] = t('email_sent_successfully') if ContactMailer.contact_email(contact).deliver
       end
     end
-
   end
 end

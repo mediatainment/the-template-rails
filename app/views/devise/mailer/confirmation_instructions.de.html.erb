@@ -1,0 +1,5 @@
+<p>Hallo <%= @email %>!</p>
+
+<p>Du kannst mittels den nachfolgenden Link Deine Email bestätigen:</p>
+
+<p><%= link_to t('devise.confirmations.account'), confirmation_url(@resource, confirmation_token: @token) %></p>

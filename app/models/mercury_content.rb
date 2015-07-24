@@ -8,8 +8,7 @@ class MercuryContent < ActiveRecord::Base
 
   validates_presence_of :value, unless: -> (mc) { mc.type == 'image' }
   validates_presence_of :type, :name
-
-  friendly_id :name
+  validates_uniqueness_of :name, :scope => :type
 
   serialize :snippets, Hash
   serialize :data, Hash

@@ -1,25 +1,25 @@
 crumb :root do
-  link 'Home', root_path
+  link t('home'), root_path
 end
 
 crumb :categories do
-  link 'Categories', categories_path
+  link t('categories'), categories_path
 end
 
 crumb :articles do
-  link 'Articles', articles_path
+  link t('articles'), articles_path
 end
 
 crumb :users do
-  link 'Users', users_path
+  link t('users'), users_path
 end
 
 crumb :roles do
-  link 'Roles', roles_path
+  link t('roles'), roles_path
 end
 
 crumb :contact do
-  link 'Contact', contact_path
+  link t('contact'), contact_path
 end
 
 # crumb :projects do

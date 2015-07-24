@@ -4,6 +4,7 @@ module LanguageHelper
     "#{request.protocol}#{request.host_with_port}#{request.fullpath.gsub(/^\/(en|de)\//, "/")}"
   end
 
+  # list item style for language
   def language_items
     html = "<ul>"
 

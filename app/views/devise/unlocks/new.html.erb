@@ -1,4 +1,4 @@
-<h2>Bestätigungsmail erneut senden</h2>
+<h2><%= t('devise.unlocks.title') %></h2>
 
 <%= devise_error_messages! %>
 
@@ -6,11 +6,11 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.bootstrap_email_field :email, autofocus: true %>
+    <%= f.bootstrap_email_field :email, label: t('email'), autofocus: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Bestätigungsmail jetzt senden", class: 'btn btn-default' %>
+    <%= f.submit t('devise.unlocks.submit'), class: 'btn btn-default' %>
   </div>
 <% end %>
 

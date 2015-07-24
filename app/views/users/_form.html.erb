@@ -2,19 +2,19 @@
     <%= errors_for @user %>
 
     <div class="field">
-      <%= f.bootstrap_text_field :email %>
+      <%= f.bootstrap_text_field :email, label: t('email') %>
     </div>
 
     <div class="field">
-      <%= f.bootstrap_text_field :username %>
+      <%= f.bootstrap_text_field :username, label: t('username') %>
     </div>
 
     <div class="field">
-      <%= f.bootstrap_password_field :password %>
+      <%= f.bootstrap_password_field :password, label: t('password') %>
     </div>
 
     <div class="field">
-      <%= f.bootstrap_password_field :password_confirmation %>
+      <%= f.bootstrap_password_field :password_confirmation, t('password_confirmation') %>
     </div>
     <div>
       <%= f.label :roles %> <br>
@@ -30,6 +30,6 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Button", class: 'btn btn-default' %>
+      <%= f.submit t('submit'), class: 'btn btn-default' %>
     </div>
 <% end %>

@@ -15,10 +15,6 @@ class MercuryImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :custom do
-    process :resize_to_limit => [800, 600]
-  end
-
   def extension_white_list
     %w(jpg jpeg gif png)
   end

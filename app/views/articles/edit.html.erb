@@ -1,6 +1,6 @@
-<h1>Editing article</h1>
+<h1><%= t('edit_resource', resource: t('article')) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @article, class: 'btn btn-default' %> |
-<%= link_to 'Back', articles_path, class: 'btn btn-default' %>
+<%= link_to t('show'), @article, class: 'btn btn-default' %> |
+<%= link_to t('back'), articles_path, class: 'btn btn-default' %>

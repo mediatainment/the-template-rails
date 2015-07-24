@@ -1,6 +1,6 @@
-<h1>Editing category</h1>
+<h1><%= t('edit_resource', resource: t('category')) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @category, class: 'btn btn-default' %> |
-<%= link_to 'Back', categories_path, class: 'btn btn-default' %>
+<%= link_to t('show'), @category, class: 'btn btn-default' %> |
+<%= link_to t('back'), categories_path, class: 'btn btn-default' %>

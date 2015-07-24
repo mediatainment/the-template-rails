@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= t('name') %>:</b>
   <%= @role.name %>
 </p>
 
-
-<%= link_to 'Edit', edit_role_path(@role), class: 'btn btn-default' %> |
-<%= link_to 'Back', roles_path , class: 'btn btn-default'%>
+<%= link_to t('edit'), edit_role_path(@role), class: 'btn btn-default' %> |
+<%= link_to t('back'), roles_path , class: 'btn btn-default'%>

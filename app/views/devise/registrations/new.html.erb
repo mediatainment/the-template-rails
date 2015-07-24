@@ -1,4 +1,4 @@
-<h2>Registrieren</h2>
+<h2><%= t('sign_up') %></h2>
 
 <%= devise_error_messages! %>
 
@@ -13,15 +13,15 @@
     <% if @validatable %>
     <em>(Mindestens <%= @minimum_password_length %> Zeichen)</em>
     <% end %><br />
-    <%= f.bootstrap_password_field :password, autocomplete: "off" %>
+    <%= f.bootstrap_password_field :password, label: t('password'), autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.bootstrap_password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.bootstrap_password_field :password_confirmation, label: t('confirm_password'), autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class: 'btn btn-default' %>
+    <%= f.submit(t('sign_up'), class: 'btn btn-default') %>
   </div>
 <% end %>
 

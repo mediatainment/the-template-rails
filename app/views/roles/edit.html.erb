@@ -1,6 +1,6 @@
-<h1>Editing role</h1>
+<h1><%= t('edit_resource', resource: t('role')) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @role, class: 'btn btn-default' %> |
-<%= link_to 'Back', roles_path, class: 'btn btn-default' %>
+<%= link_to t('show'), @role, class: 'btn btn-default' %> |
+<%= link_to t('back'), roles_path, class: 'btn btn-default' %>

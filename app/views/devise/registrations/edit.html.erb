@@ -1,4 +1,4 @@
-<h2><%= resource_name.to_s.humanize %> ändern</h2>
+<h2><%= t('edit_account') %></h2>
 
 <%= devise_error_messages! %>
 
@@ -6,33 +6,32 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.bootstrap_email_field :email, label: t('email'), autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Warte auf folgende Bestätigung: <%= resource.unconfirmed_email %></div>
+    <div><%= t('devise.waiting_for_confirmation_for_email', email: resource.unconfirmed_email) %></div>
   <% end %>
 
   <div class="field">
-    <%= f.bootstrap_password_field :password, label: '(Leer lassen, wenn keine Änderung erwünscht ist)', autocomplete: "off" %>
+    <%= f.bootstrap_password_field :password, label: t('keep_empty_for_no_change'), autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.bootstrap_password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.bootstrap_password_field :password_confirmation, label: t('confirm_password'), autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.bootstrap_password_field :current_password, label: '(Um die Änderungen zu bestätigen, brauchen wir Dein Passwort)', autocomplete: "off" %>
+    <%= f.bootstrap_password_field :current_password, label: t('to_confirm_we_need_your_password'), autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Änderungen übernehmen", class: 'btn btn-default' %>
+    <%= f.submit t('save_changes'), class: 'btn btn-default' %>
   </div>
 <% end %>
 
-<h3>Account löschen</h3>
+<h3><%= t('destroy_my_account') %></h3>
 
-<p>Unglücklich? <%= button_to "Meinen Account löschen", registration_path(resource_name), class: 'btn btn-default', data: { confirm: "Bist Du sicher? Dieser Vorgang ist unwiderruflich" }, method: :delete %></p>
+<p><%= t('unhappy') %>? <%= button_to t('destroy_my_account'), registration_path(resource_name), class: 'btn btn-default', data: { confirm: t('are_you_sure_destroy_account') }, method: :delete %></p>
 
-<%= link_to "Zurück", :back %>
+<%= link_to t('back'), :back %>

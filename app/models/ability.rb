@@ -2,11 +2,20 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
+    # roles for ALL USERS
     @user = user || User.new
     @user.list_of_roles.each { |role| send(role) }
     cannot :any, User
-    can :create, User
+    #can :create, User
+  end
+
+  def admin
+    can :manage, :all
+  end
+
+  # failsave when not meeting any role definition
+  def method_missing method_name
+  end
 
     # Define abilities for the passed in user here. For example:
     #
@@ -34,15 +43,5 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
-
-  def admin
-    can :manage, :all
-  end
-
-  # failsave when not meeting any role definition
-  def method_missing method_name
-
-  end
 
 end
