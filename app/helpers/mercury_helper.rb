@@ -2,13 +2,13 @@ module MercuryHelper
 
   # renders a mercury dynamic content
   # type can be :full, :simple, :markdown, :snippets, :image
-  def make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false, size='800x600')
+  def make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false, size='100%xauto')
     id = localize_id(id) if i18n
     content = MercuryContent.find_or_create_by_name_and_type(id, kind)
     if kind == :image
-      if content.height.nil? && content.width.nil?
+      if size
         dimensions = size.split('x')
-        content.update_attributes(height: dimensions.first, width: dimensions.last)
+        content.update_attributes(width: dimensions.first, height: dimensions.last)
       end
       mercury_image_tag(content)
     else
@@ -19,9 +19,9 @@ module MercuryHelper
   def mercury_image_tag(content)
     image_tag content.settings[:src], id: content.name,
               data: {mercury: content.type, contenteditable: 'true'},
-              alt: content.name,
-              :height => content.height,
-              :width => content.width
+              alt: "#{content.name}-#{content.width}x#{content.height}",
+              width: content.width,
+              height: content.height
   end
 
   def render_snippets(content, id, type, which_tag)

@@ -27,5 +27,8 @@ class MercuryContent < ActiveRecord::Base
     self.value ||= " "
   end
 
+  def image_url
+    settings[:src]
+  end
 
 end

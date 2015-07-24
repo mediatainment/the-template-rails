@@ -1,11 +1,6 @@
 <div class="jumbotron">
-  <%= make_mercury('jumbotron-title', :snippets) %>
+  <%= make_mercury('jumbotron-title', :simple, :h1, true) %>
+  <%= make_mercury('jumbotron-subtitle', :simple, :p, true) %>
 
-  <p><%= link_to 'Register Now', new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
-
-  <script type="application/javascript">
-      jQuery(window).bind('mercury:ready', function () {
-
-      });
-  </script>
+  <%= make_mercury('frontpage-header-image', :image, nil, false) %>
 </div>

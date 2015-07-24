@@ -73,7 +73,7 @@ Possible kind/types of mercury tags are:
 * :image  
     * image tag (drag and drop)
     * example ```make_mercury("my-dom-id", :image)```
-    * example ```make_mercury('my-dom-id', :image, nil, false, '100x500')```
+    * example ```make_mercury('my-dom-id', :image, nil, false, '100%x500')```
 
 * :snippets
     * allows only to put in snippets (n.times)

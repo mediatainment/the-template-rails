@@ -13,8 +13,12 @@ class MercuryImage < ActiveRecord::Base
     super(options)
   end
 
-  def dimensions
+  def dimensions_as_array
     [width, height]
+  end
+
+  def dimensions_as_string
+    "#{width}x#{height}"
   end
 
 end
