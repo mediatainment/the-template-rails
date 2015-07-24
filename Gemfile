@@ -80,7 +80,8 @@ group :development do
   # https://github.com/bkeepers/dotenv
   # extended error stacktrace
   gem 'better_errors'
-  #gem 'rubymine_heaven'
+  gem 'rubymine_heaven'
+  gem 'bullet'
   gem 'meta_request'
 end
 
