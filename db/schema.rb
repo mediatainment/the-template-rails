@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150724214556) do
+ActiveRecord::Schema.define(:version => 20150725001421) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -43,7 +43,21 @@ ActiveRecord::Schema.define(:version => 20150724214556) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
+
+  create_table "category_translations", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "locale",      :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "name"
+  end
+
+  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
+  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
 
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false

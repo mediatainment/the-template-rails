@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "articles/edit", :type => :view do
   before(:each) do
     @article = assign(:article, Article.create!(
-      :title => "MyString",
-      :subtitle => "MyString",
-      :content => "MyString",
-      :published => false,
-      :featured => false,
-      :meta_description => "MyString"
-    ))
+                                  :title => "MyString",
+                                  :subtitle => "MyString",
+                                  :content => "MyString",
+                                  :published => false,
+                                  :featured => false,
+                                  :meta_description => "MyString"
+                              ))
   end
 
   it "renders the edit article form" do
