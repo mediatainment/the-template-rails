@@ -27,7 +27,7 @@ MediatainmentProductionsTemplate::Application.routes.draw do
     resources :users
 
     match 'index' => 'index#index', as: :index, via: [:get]
-    match 'kontakt' => 'email#contact_form', as: :contact, via: [:get, :post]
+    match 'contact' => 'email#contact_form', as: :contact, via: [:get, :post]
 
     root to: 'index#index'
 
