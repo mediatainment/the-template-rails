@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
 
   validates_presence_of :name
 
-  friendly_id :name,use: [:slugged, :finders]
+  friendly_id :name, use: :slugged
 
   translates :name
 end
