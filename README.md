@@ -1,8 +1,8 @@
 EasySite Boilerplate by mediatainment productions
 ===
 
-This app is a boilerplate to jumpstart a rails app. So the most basic setup is already done. Rename the app (see below), set the ```ENV`` Variables and you are good to go. 
-Read the ```.gemfile``` to see what's already installed.
+This app is a boilerplate to jumpstart a rails app. So the most basic setup is already done. Rename the app (see below), set the ``ENV`` Variables and you are good to go. 
+Read the ``.gemfile`` to see what's already installed.
 
 Setup
 ===
@@ -17,7 +17,7 @@ Setup
 ENV
 ===
 
-You can also put a ```.env``` file into your project root containing the env files
+You can also put a ``.env`` file into your project root containing the env files
 
 
 These variables must be set to run the app correctly:
@@ -35,6 +35,9 @@ These variables must be set to run the app correctly:
 Rake Tasks
 ===
 
+Generate Admin
+---
+
 Generates an admin with email **demo@demo.com** and passwort **asdfasdf1**
 
     admin:rescue
@@ -46,17 +49,12 @@ Rename the app
 
 You must also change the **config/database_yml** file  
 
-Generate Admin
----
-
-    admin:rescue
-
 Mercury Content
----
+===
 
 In order to be able to make inplace editing most efficient, we use Mercury.
 
-We modified mercury, so you can use a specific view_helper in the view, give it an ```#id```, and optional parameters and the tag is doing the rest.
+We modified mercury, so you can use a specific view_helper in the view, give it an ``#id``, and optional parameters and the tag is doing the rest.
  
      <%= make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false) %>
      
@@ -64,27 +62,31 @@ Possible kind/types of mercury tags are:
 
 * :simple 
     * simple unformatted text field (default)
-    * example ```make_mercury("my-dom-id")```
-    * example ```make_mercury("my-dom-id", :simple, :p)``` with "p"-tag
-    * example ```make_mercury("my-dom-id", :simple, :p, true)``` with "p"-tag and translation
+    * example ``make_mercury("my-dom-id")``
+    * example ``make_mercury("my-dom-id", :simple, :p)`` with "p"-tag
+    * example ``make_mercury("my-dom-id", :simple, :p, true)`` with "p"-tag and translation
 * :full
     * full editable content (html, snippets, images)
-    * example ```make_mercury('my-dom-id', :full)```
+    * example ``make_mercury('my-dom-id', :full)``
 * :image  
     * image tag (drag and drop)
-    * example ```make_mercury("my-dom-id", :image)```
-    * example ```make_mercury('my-dom-id', :image, nil, false, '100%x500')```
+    * example ``make_mercury("my-dom-id", :image)``
+    * example ``make_mercury('my-dom-id', :image, nil, false, '100%x500')``
 
 * :snippets
     * allows only to put in snippets (n.times)
-    * example ```make_mercury("my-dom-id", :snippets)```
+    * example ``make_mercury("my-dom-id", :snippets)``
 
 Authentication
----
+===
 
-This template uses the ```devise``` gem.
+This template uses the ``devise`` gem.
 
-The role management is handled by ```cancancan``` and its roles are handled in the ```Ability``` model
+The role management is handled by ``cancancan`` and its roles are handled in the ``Ability`` model
+
+It's predefined to use
+
+[https://github.com/CanCanCommunity/cancancan](https://github.com/CanCanCommunity/cancancan)
 
 Preconfigured Sites
 ===
@@ -95,17 +97,17 @@ This template offers the following sites already setup
 * /contact (index/contact)
 * /users
 * /roles
-* /einloggen
-* /ausloggen
-* /registrieren
+* /login
+* /logout
+* /register
 * /password
-* /bestaetigen
-* /entsperren
+* /confirm
+* /unlock
 
 Navigation
 ===
 
-The navigation can be set in ```/config/navigation.rb```.
+The navigation can be set in ``/config/navigation.rb``.
 
 SEO
 ===
@@ -143,6 +145,8 @@ Do not use the change method, use up and down!
 
 InPlaceEditing
 ===
+
+[https://github.com/janv/rest_in_place](https://github.com/janv/rest_in_place)
 
 To make a piece of Text inplace-editable, wrap it into an element (a span usually) with class "rest-in-place". The editor needs 3 pieces of information to work: a URL, an object name and the attribute name. These are provided as follows:
 
@@ -261,8 +265,6 @@ Set ENV Variables
 
 Visit website to get more Infos
 # https://github.com/carrierwaveuploader/carrierwave
-
-
 
 
 
