@@ -7,10 +7,7 @@ module MercuryHelper
     content = MercuryContent.find_or_create_by_name_and_type(id, kind)
 
     if kind == :image
-      if size
-        dimensions = size.split('x')
-        content.update_attributes(width: dimensions.first, height: dimensions.last)
-      end
+      assign_dimensions(content, size)
       mercury_image_tag(content)
     else
       render_mercury_tag(content, id, kind, surrounded_tag)
@@ -61,5 +58,14 @@ module MercuryHelper
   # this helper links to the editor of the current page
   def mercury_edit_path(path = nil)
     mercury_editor_path(path.nil? ? request.path.gsub(/^\/\/?(editor)?/, '') : path)
+  end
+
+  private
+
+  def assign_dimensions(content, size)
+    return unless size
+
+    dimensions = size.split('x')
+    content.update_attributes(width: dimensions.first, height: dimensions.last)
   end
 end
