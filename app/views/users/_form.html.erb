@@ -18,7 +18,7 @@
     </div>
     <div>
       <%= f.label :roles %> <br>
-      <% for role in Role.all.sort %>
+      <% Role.all.sort.each do |role|  %>
           <div class="checkbox">
             <label>
               <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
