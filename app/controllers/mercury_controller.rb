@@ -1,11 +1,11 @@
 class MercuryController < ActionController::Base
   include ::Mercury::Authentication
 
-  load_and_authorize_resource
+  skip_authorization_check
 
   protect_from_forgery
 
-  before_filter :authenticate, :only => :edit
+  before_filter :authenticate, :only => [:edit, :update, :create]
 
   layout false
 
