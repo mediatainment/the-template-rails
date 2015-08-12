@@ -6,7 +6,6 @@ class Ability
     @user = user || User.new
     @user.list_of_roles.each { |role| send(role) }
     cannot :any, User
-    #can :create, User
   end
 
   def admin
