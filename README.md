@@ -46,12 +46,13 @@ Generates an admin with email **demo@demo.com** and passwort **asdfasdf1**
 
     admin:rescue:init
 
-Rename the app
+
+Renaming the app
 ===
 
-    rails g rename:app_to Your-New-Name
+    rails g rename:app_to Your-New-Name # -> CamelCase-With-Dash-Is-Important
 
-You must also change the **config/database_yml** file  
+You _must_ also change the **config/database_yml** file
 
 Mercury Content
 ===
