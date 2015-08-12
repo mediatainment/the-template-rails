@@ -60,15 +60,17 @@ gem 'meta-tags'
 gem 'rest_in_place'
 
 # Assets
-gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.2.3'
+  gem 'jquery-rails'
+  gem 'sass-rails'
+  gem 'compass-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass', '~> 3.3.4'
   gem 'bootstrap-form', '~> 3.0.0'
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
