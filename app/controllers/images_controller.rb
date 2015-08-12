@@ -11,14 +11,14 @@ class ImagesController < MercuryController
   def update
     image_params = params[:image]
     if image_params
-      c = MercuryImage.find_or_create_by_name(image_params.first[0])
+      mercury_image = MercuryImage.find_or_create_by_name image_params.first[0]
       the_file = image_params.first[1]
-      c.image.store!(the_file)
-      c.update_attribte :image_url, c.image.file.path
-      c.save!
+      mercury_image.image.store!(the_file)
+      mercury_image.update_attribte :image_url, mercury_image.image.file.path
+      mercury_image.save!
     end
 
-    render text: "{\"image\":{\"url\":\"#{c.image.to_s}\"}}"
+    render text: "{\"image\":{\"url\":\"#{mercury_image.image.to_s}\"}}"
   end
 
 end
