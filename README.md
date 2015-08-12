@@ -97,13 +97,19 @@ It's predefined to use
 
 [https://github.com/CanCanCommunity/cancancan](https://github.com/CanCanCommunity/cancancan)
 
+Short description
+---
+
+add ``skip_authoization_check`` or ``load_and_authorize_resource`` or ``load_resource`` or ``authorize_resource`` to your controllers
+
+In the ``Ability``- model you can define your roles and authorizations. A description can be found in the Ability model itself.
 
 Preconfigured Sites
 ===
 
 This template offers the following sites already setup
 
-* / (index/home)
+* / (index/index)
 * /contact (index/contact)
 * /users
 * /roles
@@ -118,8 +124,11 @@ This template offers the following sites already setup
 Navigation
 ===
 
-The navigation can be set in ``/config/navigation.rb``.
+The navigation for the menues can be set in ``/config/navigation.rb``. You can also create differen files for the different menues you want. But you have to suffix with ``xxx_navigation.rb`` 
 
+Basic instruction and usage is in the /config folder. Keep in mind: One file has to exist named ``navigation.rb``
+
+Detailed documentation is here [https://github.com/codeplant/simple-navigation/wiki](https://github.com/codeplant/simple-navigation/wiki)
 
 SEO
 ===
