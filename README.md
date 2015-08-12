@@ -31,6 +31,10 @@ These variables must be set to run the app correctly:
     MAIL_SENDER_TLS:           false
     MAIL_SENDER_USERNAME:      YOUR_EMAIL
     MAIL_SYSTEM_ADMIN:         YOUR_EMAIL
+    S3_BUCKET_NAME             THE_S3_BUCKET_NAME
+    S3_KEY:                    THE_S3_KEY
+    S3_SECRET:                 THE_S3_SECRET_KEY
+    S3_REGION:                 THE_S3_REGION
 
 Rake Tasks
 ===
@@ -40,7 +44,7 @@ Generate Admin
 
 Generates an admin with email **demo@demo.com** and passwort **asdfasdf1**
 
-    admin:rescue
+    admin:rescue:init
 
 Rename the app
 ===
@@ -55,19 +59,22 @@ Mercury Content
 In order to be able to make inplace editing most efficient, we use Mercury.
 
 We modified mercury, so you can use a specific view_helper in the view, give it an ``#id``, and optional parameters and the tag is doing the rest.
- 
-     <%= make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false) %>
-     
+
+    <%= make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false) %>
+
+
 Possible kind/types of mercury tags are:
 
 * :simple 
-    * simple unformatted text field (default)
+    * unformatted text field (default)
     * example ``make_mercury("my-dom-id")``
     * example ``make_mercury("my-dom-id", :simple, :p)`` with "p"-tag
     * example ``make_mercury("my-dom-id", :simple, :p, true)`` with "p"-tag and translation
+    
 * :full
     * full editable content (html, snippets, images)
     * example ``make_mercury('my-dom-id', :full)``
+    
 * :image  
     * image tag (drag and drop)
     * example ``make_mercury("my-dom-id", :image)``
@@ -76,6 +83,7 @@ Possible kind/types of mercury tags are:
 * :snippets
     * allows only to put in snippets (n.times)
     * example ``make_mercury("my-dom-id", :snippets)``
+
 
 Authentication
 ===
@@ -87,6 +95,7 @@ The role management is handled by ``cancancan`` and its roles are handled in the
 It's predefined to use
 
 [https://github.com/CanCanCommunity/cancancan](https://github.com/CanCanCommunity/cancancan)
+
 
 Preconfigured Sites
 ===
@@ -104,13 +113,16 @@ This template offers the following sites already setup
 * /confirm
 * /unlock
 
+
 Navigation
 ===
 
 The navigation can be set in ``/config/navigation.rb``.
 
+
 SEO
 ===
+
 
 Meta Tags
 ---
@@ -121,11 +133,10 @@ Meta Tags
     set_meta_tags :site => 'Site Title', :title => 'Member Login', :reverse => true
 
 
-
 Translation
 ===
 
-https://github.com/globalize/globalize
+[https://github.com/globalize/globalize](https://github.com/globalize/globalize)
     
 Do not use the change method, use up and down!
 
@@ -193,7 +204,8 @@ activate.rest-in-place when starting the editing of the element. Triggering the 
 ready.rest-in-place when the form has been built. This event can be used e.g. to change the size of the field or textarea.
 success.rest-in-place with the data retrieved from the server as an extra parameter after a successful save on the server. This event is triggered at the very latest moment, after the element has been restored with the data from the server. This means you can use the event handler to further modify the data and overwrite the displayed value (useful for number/date formatting for example).
 failure.rest-in-place after an error occurred. The second argument will be jQuery's responseJSON, so it is possible to handle (for instance) server-side validation errors.
-    
+
+
     $('#my-editable-element').bind('failure.rest-in-place', function(event, json) {
         $el = $(this);
         attr = $el.data("attribute");
@@ -208,9 +220,11 @@ failure.rest-in-place after an error occurred. The second argument will be jQuer
     $('#my-editable-element').bind('success.rest-in-place', function(event, data){
       console.log("Yay it worked! The new value is", data.whatever);
     });
-    
+
+
 Example
 ---
+
     Your routes.rb:
 
 resources :users
@@ -248,10 +262,12 @@ Your app/controllers/users_controller.rb:
       Name: <span class="rest-in-place" data-formtype="input" data-attribute="name"><%= @user.name %></span><br/><br/>
       Hobbies: <span class="rest-in-place" data-formtype="textarea" data-attribute="hobbies"><%= @user.hobbies %></span>
     </div>
-    
+
+
 You can run this example by running to the testapp included in this plugin with script/server (SQLite3 required) and visiting localhost:3000/users/
 
 Hint: you might need to set up the database first. Copy and edit testapp/config/database.yml.sample accordingly. If you don't want to use the included SQLite3 database, run rake db:create and rake db:schema:load.
+
 
 FileUpload with Carrierwave
 ===
@@ -263,10 +279,10 @@ Set ENV Variables
     S3_BUCKET_NAME
     S3_REGION
 
+
 Visit website to get more Infos
-# https://github.com/carrierwaveuploader/carrierwave
+
+[https://github.com/carrierwaveuploader/carrierwave](https://github.com/carrierwaveuploader/carrierwave)
 
 
-
-
-copyright by Jan Jezek
+copyright by [mediatainment-productions](http://www.mediatainment-productions.com)
