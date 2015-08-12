@@ -11,5 +11,14 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe MercuryHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it 'should return a valid HTML Tag' do
+
+    id = "html-tag-id-string"
+    regexp = /<("[^"]*"|'[^']*'|[^'">])*>/
+
+    result = helper.make_mercury(id).match(regexp)
+    expect(result).to_not be_nil
+
+  end
 end
