@@ -5,6 +5,7 @@ module MercuryHelper
   def make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false, size='100%xauto')
     id = localize_id(id) if i18n
     content = MercuryContent.find_or_create_by_name_and_type(id, kind)
+
     if kind == :image
       if size
         dimensions = size.split('x')
@@ -18,12 +19,14 @@ module MercuryHelper
 
   # renders a mercury image tag
   # use make_mercury for creation
-  def mercury_image_tag(content)
-    image_tag content.settings[:src], id: content.name,
-              data: {mercury: content.type, contenteditable: 'true'},
-              alt: "#{content.name}-#{content.width}x#{content.height}",
-              width: content.width,
-              height: content.height
+  def mercury_image_tag(mercury_image)
+    image_settings = mercury_image.settings[:src]
+    image_source = image_settings.blank? ? 'no_image_defined.png' : image_settings
+    image_tag image_source, id: mercury_image.name,
+              data: {mercury: mercury_image.type, contenteditable: 'true'},
+              alt: "#{mercury_image.name}-#{mercury_image.width}x#{mercury_image.height}",
+              width: mercury_image.width,
+              height: mercury_image.height
   end
 
   # renders a mercury tag
