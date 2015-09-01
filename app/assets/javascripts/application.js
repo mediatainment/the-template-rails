@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ckeditor/init
 //= require jquery-migrate-min
 //= require bootstrap-sprockets
 //= require 'rest_in_place'

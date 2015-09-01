@@ -295,4 +295,10 @@ Visit website to get more Infos
 [https://github.com/carrierwaveuploader/carrierwave](https://github.com/carrierwaveuploader/carrierwave)
 
 
+Usage of CK-Editor
+===
+
+Simply add a class to your ``textarea``-Tag. (Example: ``f.bootstrap_text_area :my_content, label: t('content'), class: 'ckeditor'`` 
+
+
 copyright by [mediatainment-productions](http://www.mediatainment-productions.com)

@@ -14,6 +14,10 @@ ActionView::Base.field_error_proc = proc { |input, instance| input }
 
 module MediatainmentProductionsTemplate
   class Application < Rails::Application
+
+    # CKEditor load models
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

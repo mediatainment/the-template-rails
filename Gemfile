@@ -30,6 +30,7 @@ gem 'gretel'
 
 gem 'mercury-rails', git: 'git://github.com/jejacks0n/mercury'
 gem 'jquery-migrate-rails' # is needed for mercury-rails (js console error)
+gem 'ckeditor'
 
 # Multilingual / Translation
 # https://github.com/globalize/globalize
