@@ -1,24 +1,37 @@
 module MercuryHelper
 
-  # renders a mercury dynamic content
+  # Renders a mercury dynamic content
   # type can be :full, :simple, :markdown, :snippets, :image
-  def make_mercury(id, kind=:simple, surrounded_tag=:div, i18n=false, size='100%xauto')
-    id = localize_id(id) if i18n
-    content = MercuryContent.find_or_create_by_name_and_type(id, kind)
+  # by default i18n: false, wrapper: :div
+  # images are by default 100px height and have a width of auto.
+  # make_mercury(html_id, :full, wrapper: :div, ,i18n: true)
+  # make_mercury(html_id, :image, size: "100%x250", class: "my-class")
+  # The very first implementation creates the db entry and can be filled in the editor
+  def make_mercury(*args)
 
-    if kind == :image
-      assign_dimensions(content, size)
-      mercury_image_tag(content)
+    options = args.extract_options!
+    tag_id = options[:i18n] ? localize_id(args.first) : args.first
+    content = MercuryContent.find_or_create_by_name_and_type(tag_id, args.second)
+
+    if args.second == :image
+      mercury_image_tag(content, options)
     else
-      render_mercury_tag(content, id, kind, surrounded_tag)
+      render_mercury_tag(content, tag_id, options)
     end
   end
 
   # renders a mercury image tag
   # use make_mercury for creation
-  def mercury_image_tag(mercury_image)
+  def mercury_image_tag(mercury_image, options)
+    options[:size] ||= '100%xauto'
+    assign_dimensions(mercury_image, options)
     image_settings = mercury_image.settings[:src]
     image_source = image_settings.blank? ? 'no_image_defined.png' : image_settings
+    mercury_image(image_source, mercury_image)
+  end
+
+
+  def mercury_image(image_source, mercury_image)
     image_tag image_source, id: mercury_image.name,
               data: {mercury: mercury_image.type, contenteditable: 'true'},
               alt: "#{mercury_image.name}-#{mercury_image.width}x#{mercury_image.height}",
@@ -28,8 +41,11 @@ module MercuryHelper
 
   # renders a mercury tag
   # use make_mercury for creation
-  def render_mercury_tag(content, id, type, which_tag)
-    content_tag(which_tag, id: id, data: {mercury: type.to_s, contenteditable: 'true'}) do
+  def render_mercury_tag(content, id, options)
+    wrapper = options[:wrapper] ? options[:wrapper] : :div
+    type = options[:type] ? options[:type] : :simple
+    class_name = options[:class] ? options[:class] : ""
+    content_tag(wrapper, class: class_name, id: id, data: {mercury: type.to_s, contenteditable: 'true'}) do
       parse_snippets(content).html_safe
     end.html_safe
   end
@@ -55,17 +71,16 @@ module MercuryHelper
     end
   end
 
-  # this helper links to the editor of the current page
+  # this helper links to the editor for the current page
   def mercury_edit_path(path = nil)
     mercury_editor_path(path.nil? ? request.path.gsub(/^\/\/?(editor)?/, '') : path)
   end
 
   private
 
-  def assign_dimensions(content, size)
-    return unless size
-
-    dimensions = size.split('x')
+  def assign_dimensions(content, options)
+    return unless options[:size]
+    dimensions = options[:size].split('x')
     content.update_attributes(width: dimensions.first, height: dimensions.last)
   end
 end

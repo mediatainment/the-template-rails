@@ -1,6 +1,7 @@
 <div class="jumbotron">
-  <%= make_mercury('jumbotron-title', :simple, :h1, true) %>
-  <%= make_mercury('jumbotron-subtitle', :simple, :h2, true) %>
-  <%= make_mercury('jumbotron-content', :full, :p, true) %>
+  <%= make_mercury('jumbotron-title', :simple, wrapper: :h1, i18n: true) %>
+  <%= make_mercury('jumbotron-subtitle', :simple, wrapper: :h2, i18n: true) %>
+  <%= make_mercury('jumbotron-content', :full, wrapper: :p, i18n: true) %>
   <%= make_mercury('jumbotron-image', :image) %>
+  <%= make_mercury('jumbotron-snippets', :snippets) %>
 </div>
