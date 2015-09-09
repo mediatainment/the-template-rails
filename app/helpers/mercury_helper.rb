@@ -38,7 +38,7 @@ module MercuryHelper
 
     # set default image size
     if options && options[:data] && options[:data][:width] && options[:data][:height]
-      options[:data][:width], options[:data][:height] = 1200, 1200
+      options[:data][:width], options[:data][:height] = 800, 600
     end
     
     image_tag image_source, id: mercury_image.name,
