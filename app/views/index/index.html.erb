@@ -1,7 +1,8 @@
 <div class="jumbotron">
-  <%= make_mercury('jumbotron-title', :simple, wrapper: :h1, i18n: true) %>
-  <%= make_mercury('jumbotron-subtitle', :simple, wrapper: :h2, i18n: true) %>
-  <%= make_mercury('jumbotron-content', :full, wrapper: :p, i18n: true) %>
-  <%= make_mercury('jumbotron-snippets', :snippets) %>
-  <%= make_mercury('jumbotron-image', :image, width: '100%', height: 'auto', data: {height: '200', width: '400'}) %>
+  <%= make_mercury('jumbotron-title-translated', :simple, wrapper: :h1, i18n: true) %>
+  <%= make_mercury('jumbotron-subtitle-not-translated', :simple, wrapper: :h2) %>
+  <%= make_mercury('jumbotron-content-with-editor', :full, wrapper: :p) %>
+  <%= make_mercury('jumbotron-snippet-example', :snippets) %>
+  <%= make_mercury('jumbotron-image-min-requirements', :image, data: {height: '200', width: '400'}) %>
+  <%= make_mercury('jumbotron-image-with-translation', :image, i18n: true, width: '100%', height: 'auto', data: {height: '200', width: '400'}) %>
 </div>
