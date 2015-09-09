@@ -5,7 +5,7 @@ module MercuryHelper
   # by default i18n: false, wrapper: :div
   # images are by default 100px height and have a width of auto.
   # make_mercury(html_id, :full, wrapper: :div, ,i18n: true)
-  # make_mercury(html_id, :image, size: "100%x250", class: "my-class")
+  # make_mercury('jumbotron-image', :image, height: '200', width: '400', data: {height: '200', width: '400'}, class: "my-class")
   # The very first implementation creates the db entry and can be filled in the editor
   def make_mercury(*args)
 
@@ -23,20 +23,31 @@ module MercuryHelper
   # renders a mercury image tag
   # use make_mercury for creation
   def mercury_image_tag(mercury_image, options)
-    options[:size] ||= '100%xauto'
     assign_dimensions(mercury_image, options)
     image_settings = mercury_image.settings[:src]
     image_source = image_settings.blank? ? 'no_image_defined.png' : image_settings
-    mercury_image(image_source, mercury_image)
+    mercury_image(image_source, mercury_image, options)
   end
 
+  def mercury_image(image_source, mercury_image, options=nil)
 
-  def mercury_image(image_source, mercury_image)
+    # set default image tag size
+    if options[:width].nil? && options[:height].nil?
+      options[:width], options[:height] = "100%", "auto"
+    end
+
+    # set default image size
+    if options && options[:data] && options[:data][:width] && options[:data][:height]
+      options[:data][:width], options[:data][:height] = 1200, 1200
+    end
+    
     image_tag image_source, id: mercury_image.name,
-              data: {mercury: mercury_image.type, contenteditable: 'true'},
-              alt: "#{mercury_image.name}-#{mercury_image.width}x#{mercury_image.height}",
-              width: mercury_image.width,
-              height: mercury_image.height
+              data: {mercury: mercury_image.type, contenteditable: 'true', width: options[:data][:width], height: options[:data][:height]},
+              alt: "#{mercury_image.name}",
+              width: options[:width],
+              height: options[:height],
+              onDrop: "addImageSizeToUrl($(this).attr('data-width'), $(this).attr('data-height'));resetUrlWhenSaved();"
+
   end
 
   # renders a mercury tag
@@ -79,8 +90,7 @@ module MercuryHelper
   private
 
   def assign_dimensions(content, options)
-    return unless options[:size]
-    dimensions = options[:size].split('x')
-    content.update_attributes(width: dimensions.first, height: dimensions.last)
+    return unless options[:data][:width] && options[:data][:height]
+    content.update_attributes(width: options[:data][:width], height: options[:data][:height])
   end
 end

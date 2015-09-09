@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150901213952) do
+ActiveRecord::Schema.define(:version => 20150908154632) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -113,6 +113,8 @@ ActiveRecord::Schema.define(:version => 20150901213952) do
     t.string   "image_content_type"
     t.string   "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "width"
+    t.string   "height"
   end
 
   add_index "mercury_images", ["name"], :name => "index_mercury_images_on_name"

@@ -2,8 +2,6 @@
 
 class MercuryImageUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -11,6 +9,39 @@ class MercuryImageUploader < CarrierWave::Uploader::Base
 
   before :store, :remember_cache_id
   after :store, :delete_tmp_dir
+
+  version :mercury do
+    process :custom_resize_to_fill
+  end
+
+  def custom_mercury
+    manipulate! do |img|
+      unless model.width.nil? && model.height.nil?
+        img.resize "#{model.height}x#{model.width}"
+      end
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
+  # Resize to fill (new method, with '^' flag)
+  # http://www.imagemagick.org/Usage/resize/#fill
+  #
+  # works both with ImageMagick and GraphicsMagick as expected
+  def custom_resize_to_fill
+    manipulate! do |img|
+      unless model.width.nil? && model.height.nil?
+        img.combine_options do |cmd|
+          cmd.resize "#{model.width}x#{model.height}^"
+          cmd.gravity 'center'
+          cmd.extent "#{model.width}x#{model.height}"
+        end
+      end
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
 
   # store! nil's the cache_id after it finishes so we need to remember it for deletion
   def remember_cache_id(new_file)
@@ -48,6 +79,7 @@ class MercuryImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+
 
   # Create different versions of your uploaded files:
   # version :thumb do

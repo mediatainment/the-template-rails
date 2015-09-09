@@ -1,9 +1,8 @@
 class MercuryImage < ActiveRecord::Base
 
-  attr_accessible :image, :name, :image_url
+  attr_accessible :image, :name, :image_url, :width, :height
 
   mount_uploader :image, MercuryImageUploader
-
 
   def serializable_hash(options = nil)
     options ||= {}
