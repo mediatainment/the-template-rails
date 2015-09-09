@@ -11,9 +11,10 @@ module MercuryHelper
 
     options = args.extract_options!
     tag_id = options[:i18n] ? localize_id(args.first) : args.first
-    content = MercuryContent.find_or_create_by_name_and_type(tag_id, args.second)
+    options[:type] ||= args.second || :simple
+    content = MercuryContent.find_or_create_by_name_and_type(tag_id, options[:type])
 
-    if args.second == :image
+    if options[:type] == :image
       mercury_image_tag(content, options)
     else
       render_mercury_tag(content, tag_id, options)
