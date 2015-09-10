@@ -3,10 +3,27 @@ $.getScript("/assets/dropzone.js", function () {
     $('.dropzone').dropzone({
         url: "/mercury/images",
         init: function () {
+
             this.on("addedfile", function (file) {
             });
+
             this.on("success", function (file, response) {
-                $('#options_image_id').val(response['image']['id']);
+                var imageField = $('input#options_image_id');
+
+                imageField.val(response['image']['id']);
+                $('form.dropzone input:submit').removeAttr('disabled');
+
+                // check if valid
+                /*
+
+                 imageField.on('change', function () {
+                 if ($.isNumeric(imageField.val())) {
+                 $('form.dropzone input:submit').removeAttr('disabled');
+                 } else {
+                 $('form.dropzone input:submit').attr('disabled', 'disabled');
+                 }
+                 })
+                 */
             });
         }
     });
