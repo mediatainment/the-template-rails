@@ -1,4 +1,4 @@
-<%= form_for 'options', {url: '', html: {multipart: true, class: 'form-horizontal', style: 'width:615px'}} do |f| %>
+<%= form_for 'options', {url: '', html: {multipart: true, class: 'form-horizontal dropzone', style: 'width:615px'}} do |f| %>
 
     <div class="form-inputs mercury-display-pane-container">
 
@@ -10,35 +10,17 @@
             <input class="span6 string optional" id="options_title" name="options[title]" size="50" type="text" value="<%= @options[:title] %>">
           </div>
         </div>
+
       </fieldset>
 
       <fieldset>
         <legend>Options</legend>
-        <div class="control-group string optional">
-          <label class="string optional control-label" for="options_checkbox">Checkbox</label>
-
-          <div class="controls">
-            <input class="span6 string optional" id="options_checkbox" name="options[checkbox]" size="50" type="checkbox" value="<%= @options[:checkbox] %>">
-          </div>
-        </div>
 
         <div class="control-group string optional">
-          <label class="string optional control-label" for="options_textarea">Textarea</label>
+          <label class="string optional control-label" for="options_image_id">Image ID</label>
 
           <div class="controls">
-            <input class="span6 string optional" id="options_textarea" name="options[textarea]" size="50" type="text" value="<%= @options[:textarea] %>">
-          </div>
-        </div>
-
-        <input class="span6 string optional" id="options_image" name="options[image]" size="50" type="file" value="<%= @options[:image] %>">
-
-
-        <div class="control-group string optional">
-          <label class="string optional control-label" for="options_image">Image</label>
-
-          <div class="controls">
-            <%= f.file_field :image, class:"span6 string optional" %>
-
+            <input class="span6 string optional" id="options_image_id" name="options[image_id]" size="50" type="text" value="<%= @options[:image_id] %>">
           </div>
         </div>
       </fieldset>

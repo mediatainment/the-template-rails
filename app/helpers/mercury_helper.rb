@@ -25,12 +25,13 @@ module MercuryHelper
   # use make_mercury for creation
   def mercury_image_tag(mercury_image, options)
     assign_dimensions(mercury_image, options)
-    image_settings = mercury_image.settings[:src]
-    image_source = image_settings.blank? ? 'no_image_defined.png' : image_settings
-    mercury_image(image_source, mercury_image, options)
+    mercury_image(mercury_image, options)
   end
 
-  def mercury_image(image_source, mercury_image, options=nil)
+  def mercury_image(mercury_image, options=nil)
+
+    image_settings = mercury_image.settings[:src]
+    image_source = image_settings.blank? ? 'no_image_defined.png' : image_settings
 
     # set default image tag size
     if options[:width].nil? && options[:height].nil?

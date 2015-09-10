@@ -3,12 +3,11 @@ class ImagesController < MercuryController
   respond_to :json
 
   def create
-    image_params = params[:image]
     size_params = {width: params[:width], height: params[:height]}
     @mercury_image = MercuryImage.new(size_params)
-    @mercury_image.image = image_params[:image]
+    @mercury_image.image = params[:file] || params[:image][:image]
     @mercury_image.save!
-    render text: "{\"image\":{\"url\":\"#{@mercury_image.image.url(:mercury)}\"}}"
+    render text: "{\"image\":{\"id\":\"#{@mercury_image.id}\",\"url\":\"#{@mercury_image.image.url(:mercury)}\"}}"
   end
 
   def update
