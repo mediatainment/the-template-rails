@@ -1,0 +1,52 @@
+<%= form_for 'options', {url: '', html: {multipart: true, class: 'form-horizontal', style: 'width:615px'}} do |f| %>
+
+    <div class="form-inputs mercury-display-pane-container">
+
+      <fieldset>
+        <div class="control-group string optional">
+          <label class="string optional control-label" for="options_title">Title</label>
+
+          <div class="controls">
+            <input class="span6 string optional" id="options_title" name="options[title]" size="50" type="text" value="<%= @options[:title] %>">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Options</legend>
+        <div class="control-group string optional">
+          <label class="string optional control-label" for="options_checkbox">Checkbox</label>
+
+          <div class="controls">
+            <input class="span6 string optional" id="options_checkbox" name="options[checkbox]" size="50" type="checkbox" value="<%= @options[:checkbox] %>">
+          </div>
+        </div>
+
+        <div class="control-group string optional">
+          <label class="string optional control-label" for="options_textarea">Textarea</label>
+
+          <div class="controls">
+            <input class="span6 string optional" id="options_textarea" name="options[textarea]" size="50" type="text" value="<%= @options[:textarea] %>">
+          </div>
+        </div>
+
+        <input class="span6 string optional" id="options_image" name="options[image]" size="50" type="file" value="<%= @options[:image] %>">
+
+
+        <div class="control-group string optional">
+          <label class="string optional control-label" for="options_image">Image</label>
+
+          <div class="controls">
+            <%= f.file_field :image, class:"span6 string optional" %>
+
+          </div>
+        </div>
+      </fieldset>
+
+    </div>
+
+    <div class="form-actions mercury-display-controls">
+      <input class="btn btn-primary" name="commit" type="submit" value="Insert Snippet"/>
+    </div>
+
+<% end %>
