@@ -32,7 +32,6 @@ MERCURY_UPLOADING_URL = '/mercury/images';
 // rewrites the original Url, after upload is done
 function resetUrlWhenSaved() {
     $(this).on('mercury:saved', function () {
-        console.log('upload done');
         Mercury.config['uploading']['url'] = MERCURY_UPLOADING_URL;
     });
 }
