@@ -3,10 +3,20 @@ class ImagesController < MercuryController
   respond_to :json
 
   def create
+    # size params must be set BEFORE carrierwave executes resizing
     size_params = {width: params[:width], height: params[:height]}
     @mercury_image = MercuryImage.new(size_params)
-    @mercury_image.image = params[:file] || params[:image][:image]
+
+
+    image_from_dropzone = params[:file]
+    image_from_mercury = params[:image][:image] if params[:image] && params[:image][:image]
+
+    # we check dropzone first, because mercury can run beside and raises an exception
+    @mercury_image.image = image_from_dropzone || image_from_mercury
     @mercury_image.save!
+
+    # :id used for dropzone images in mercury snippets
+    # :url used by mercury images
     render text: "{\"image\":{\"id\":\"#{@mercury_image.id}\",\"url\":\"#{@mercury_image.image.url(:mercury)}\"}}"
   end
 

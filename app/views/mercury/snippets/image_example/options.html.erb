@@ -20,7 +20,18 @@
           <label class="string optional control-label" for="options_image_id">Image ID</label>
 
           <div class="controls">
-            <input class="span6 string optional" id="options_image_id" name="options[image_id]" size="50" type="text" value="<%= @options[:image_id] %>">
+            <!-- define here the width and height for resizing carrierwave -->
+
+            <input class="span6 string optional"
+                   id="options_image_id"
+                   name="options[image_id]"
+                   size="50"
+                   type="text"
+                   data-width="1024"
+                   data-height="768"
+                   value="<%= @options[:image_id] %>">
+
+            <div id="dropzone-preview-container"></div>
           </div>
         </div>
       </fieldset>

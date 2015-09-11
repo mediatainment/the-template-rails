@@ -27,6 +27,7 @@
  * require mercury_overrides
  */
 
+// default url for mercury
 MERCURY_UPLOADING_URL = '/mercury/images';
 
 // rewrites the original Url, after upload is done
@@ -36,6 +37,7 @@ function resetUrlWhenSaved() {
     });
 }
 
+// append the desired size to the url parameters. This is used by mercury :image snippets.
 function addImageSizeToUrl(width, height) {
     Mercury.config['uploading']['url'] = MERCURY_UPLOADING_URL + '?width=' + width + '&height=' + height;
 }
