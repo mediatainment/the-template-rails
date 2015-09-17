@@ -15,8 +15,23 @@ class MercuryContent < ActiveRecord::Base
   serialize :settings, Hash
 
   def extract_params
-    value.gsub!(/\[snippet_\d+\/\d*\]/).with_index do |txt, idx|
+    value.gsub!(/\[snippet_\d+\/?\d*\]/).with_index do |txt, idx|
       snippets[txt]
+    end
+  end
+
+  def parse_snippets(content)
+    snippet_regex = /\[snippet_\d+\/*\d*\]/
+    if content.value =~ snippet_regex
+      content.value.gsub(snippet_regex) do |txt|
+        cleaned_snippet = txt.delete "[]" # delete brackets
+        snippet = content.snippets[cleaned_snippet]
+        if snippet
+          render(:file => "mercury/snippets/#{snippet[:name]}/preview.html", locals: {params: snippet})
+        end
+      end
+    else
+      content.value.html_safe
     end
   end
 
