@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150918005738) do
+ActiveRecord::Schema.define(:version => 20150918173603) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -85,44 +85,6 @@ ActiveRecord::Schema.define(:version => 20150918005738) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
-
-  create_table "mercury_contents", :force => true do |t|
-    t.string   "name"
-    t.text     "value",      :limit => 16777215
-    t.string   "type"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.string   "slug"
-    t.text     "snippets"
-    t.text     "data"
-    t.string   "settings"
-    t.string   "width"
-    t.string   "height"
-  end
-
-  add_index "mercury_contents", ["name"], :name => "index_mercury_contents_on_name"
-  add_index "mercury_contents", ["slug"], :name => "index_contents_on_slug", :unique => true
-
-  create_table "mercury_images", :force => true do |t|
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "name"
-    t.string   "image"
-    t.string   "image_url"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.string   "image_file_size"
-    t.datetime "image_updated_at"
-    t.string   "width"
-    t.string   "height"
-  end
-
-  add_index "mercury_images", ["name"], :name => "index_mercury_images_on_name"
-
-  create_table "mercury_snippets", :force => true do |t|
-    t.text "snippet"
-    t.text "name"
-  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
