@@ -18,10 +18,13 @@ class MercuryController < ActionController::Base
         c = MercuryContent.find_or_create_by_name_and_type(content[0], content_data['type'])
         snippets = content_data.delete('snippets')
 
-        snippets.each do |snippet|
-          snip = MercurySnippet.find_or_create_by_name(snippet[0])
-          snip.update_attribute(:snippet, snippet)
+        if snippets
+          snippets.each do |snippet|
+            snip = MercurySnippet.find_or_create_by_name(snippet[0])
+            snip.update_attribute(:snippet, snippet)
+          end
         end
+        content_data[:settings] = content_data.delete('attributes')
         c.update_attributes(content_data)
       end
     end
