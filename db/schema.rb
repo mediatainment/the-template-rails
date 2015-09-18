@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150908154632) do
+ActiveRecord::Schema.define(:version => 20150918005738) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -118,6 +118,11 @@ ActiveRecord::Schema.define(:version => 20150908154632) do
   end
 
   add_index "mercury_images", ["name"], :name => "index_mercury_images_on_name"
+
+  create_table "mercury_snippets", :force => true do |t|
+    t.text "snippet"
+    t.text "name"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

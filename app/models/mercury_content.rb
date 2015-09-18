@@ -3,14 +3,14 @@ class MercuryContent < ActiveRecord::Base
 
   self.inheritance_column = nil # to use :data as column_name
 
-  attr_accessible :name, :type, :value, :snippets, :data, :settings, :width, :height
+  attr_accessible :name, :type, :value, :data, :settings, :width, :height #, :snippets
   before_validation :default_values
 
   validates_presence_of :value, unless: -> (mc) { mc.type == 'image' }
   validates_presence_of :type, :name
   validates_uniqueness_of :name, :scope => :type
 
-  serialize :snippets, Hash
+  # serialize :snippets, Hash
   serialize :data, Hash
   serialize :settings, Hash
 
@@ -25,9 +25,9 @@ class MercuryContent < ActiveRecord::Base
     if content.value =~ snippet_regex
       content.value.gsub(snippet_regex) do |txt|
         cleaned_snippet = txt.delete "[]" # delete brackets
-        snippet = content.snippets[cleaned_snippet]
+        snippet = content.snippets[txt]
         if snippet
-          render(:file => "mercury/snippets/#{snippet[:name]}/preview.html", locals: {params: snippet})
+          render(:file => "mercury/snippets/#{snippet[:name]}/preview.html", locals: {options: snippet})
         end
       end
     else
