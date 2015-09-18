@@ -1,8 +1,12 @@
 MediatainmentProductionsTemplate::Application.routes.draw do
 
+  mount Mercury::Engine => '/'
+
   mount Ckeditor::Engine => '/ckeditor'
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
+
+    get '/editor(/*requested_uri)' => "mercury#edit", :as => :mercury_editor
 
     resources :articles
 
@@ -32,18 +36,6 @@ MediatainmentProductionsTemplate::Application.routes.draw do
     match 'contact' => 'email#contact_form', as: :contact, via: [:get, :post]
 
     root to: 'index#index'
-
-    # mercury custom implementation
-    get '/editor(/*requested_uri)' => "mercury#edit", :as => :mercury_editor
-    scope '/mercury' do
-      put 'update', to: 'mercury#update', as: :mercury_update
-      resources :images, :only => [:create, :destroy]
-      get ':type/:resource', to: "mercury#resource"
-      match 'snippets/:name/options', to: "mercury#snippet_options", :via => [:get, :post]
-      match 'snippets/:name/preview', to: "mercury#snippet_preview", :via => [:get, :post]
-      match 'snippets/:name/parameters', to: "mercury#snippet_parameters", :via => [:get, :post]
-    end
-    # end of mercury
 
   end
 

@@ -1,9 +1,12 @@
 GIT
-  remote: git://github.com/jejacks0n/mercury
-  revision: 1cc637b0bccea19085f824d2881c6513ed5ee8ae
+  remote: git://github.com/mediatainment/mercury
+  revision: 62d79b4652c954d03102c34cc9572ea80e684a5d
   specs:
     mercury-rails (0.9.0)
+      carrierwave (>= 0.10.0)
       coffee-rails (>= 3.2.2)
+      dropzonejs-rails (>= 0.7.1)
+      mini_magick (>= 4.2.4)
       railties (>= 3.0)
 
 GEM

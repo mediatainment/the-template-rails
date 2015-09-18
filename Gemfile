@@ -28,7 +28,7 @@ gem 'simple-navigation-bootstrap'
 # https://github.com/lassebunk/gretel
 gem 'gretel'
 
-gem 'mercury-rails', git: 'git://github.com/jejacks0n/mercury'
+gem 'mercury-rails', git: 'git://github.com/mediatainment/mercury'
 gem 'jquery-migrate-rails' # is needed for mercury-rails (js console error)
 gem 'ckeditor'
 gem 'dropzonejs-rails' # drag and drop for mercury snippets and images

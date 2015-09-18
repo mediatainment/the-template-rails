@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150918173603) do
+ActiveRecord::Schema.define(:version => 20150918182749) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -85,6 +85,41 @@ ActiveRecord::Schema.define(:version => 20150918173603) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "mercury_contents", :force => true do |t|
+    t.string   "mercury_contents"
+    t.string   "name"
+    t.text     "value"
+    t.string   "type"
+    t.text     "data"
+    t.string   "slug"
+    t.text     "settings"
+    t.string   "width"
+    t.string   "height"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "mercury_contents", ["name"], :name => "index_mercury_contents_on_name", :unique => true
+
+  create_table "mercury_images", :force => true do |t|
+    t.string   "mercury_images"
+    t.string   "image"
+    t.string   "width"
+    t.string   "height"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "mercury_snippets", :force => true do |t|
+    t.string   "mercury_snippets"
+    t.text     "snippet"
+    t.string   "name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "mercury_snippets", ["name"], :name => "index_mercury_snippets_on_name", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"
