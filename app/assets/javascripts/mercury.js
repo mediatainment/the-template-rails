@@ -29,14 +29,18 @@
 
 // default url for mercury
 MERCURY_UPLOADING_URL = '/mercury/images';
+
+// Array to add our used snippets, so we have them, when mercury is ready loaded
 customSnippets = [];
 
-// rewrites the original Url, after upload is done
+// rewrites the original Url, after upload is done (we added params for image size
 function resetUrlWhenSaved() {
     $(this).on('mercury:saved', function () {
         Mercury.config['uploading']['url'] = MERCURY_UPLOADING_URL;
     });
 }
+
+// inform the user when document is saved
 
 $(window).on('mercury:ready', function () {
     // find all data-snippet attributes on page
@@ -46,17 +50,20 @@ $(window).on('mercury:ready', function () {
     snippet_data_attributes.each(function () {
         // to add snippets we need something like this
         //    snippet_0: {name: "no_options"},
-        //    snippet_1: {name: "test", options: {"first_name": "jon", "favorite_beer": "beer"}},
+        //    snippet_1: {name: "test", options: {"first_name": "jon", "favorite_beer": "beer"}}
+        // so let's build them by querying the API
         var snippet_name = $(this).data('snippet');
         var jsonVariable = {};
         // we only have the name, we need the options also
         $.get("/mercury/snippets/" + snippet_name + "/parameters", function (data) {
             jsonVariable[snippet_name] = data[1];
+            // now we add them to get proper uniqueIds for new added snippets
             Mercury.Snippet.load(jsonVariable);
         });
     });
 });
 
+// we add our snippet_X to an array. This function must be called from each snippet
 function addSnippet(snippet) {
     customSnippets.push(snippet);
 }
@@ -65,6 +72,8 @@ function addSnippet(snippet) {
 function addImageSizeToUrl(width, height) {
     Mercury.config['uploading']['url'] = MERCURY_UPLOADING_URL + '?width=' + width + '&height=' + height;
 }
+
+// THE MERCURY STUFF
 
 window.Mercury = {
 
