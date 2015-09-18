@@ -74,9 +74,10 @@ module MercuryHelper
     if content.value =~ snippet_regex
       content.value.gsub(snippet_regex) do |txt|
         cleaned_snippet = txt.delete "[]" # delete brackets
-        snippet = content.snippets[cleaned_snippet]
+        snippet = MercurySnippet.find_by_name(cleaned_snippet)
         if snippet
-          render(:file => "mercury/snippets/#{snippet[:name]}/preview.html", locals: {params: snippet})
+          name = snippet.snippet[1]['name']
+          render(:file => "mercury/snippets/#{name}/preview.html", locals: {params: snippet.snippet[1]})
         end
       end
     else

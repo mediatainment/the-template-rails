@@ -41,6 +41,7 @@ MediatainmentProductionsTemplate::Application.routes.draw do
       get ':type/:resource', to: "mercury#resource"
       match 'snippets/:name/options', to: "mercury#snippet_options", :via => [:get, :post]
       match 'snippets/:name/preview', to: "mercury#snippet_preview", :via => [:get, :post]
+      match 'snippets/:name/parameters', to: "mercury#snippet_parameters", :via => [:get, :post]
     end
     # end of mercury
 

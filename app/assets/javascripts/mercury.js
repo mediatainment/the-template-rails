@@ -29,12 +29,36 @@
 
 // default url for mercury
 MERCURY_UPLOADING_URL = '/mercury/images';
+customSnippets = [];
 
 // rewrites the original Url, after upload is done
 function resetUrlWhenSaved() {
     $(this).on('mercury:saved', function () {
         Mercury.config['uploading']['url'] = MERCURY_UPLOADING_URL;
     });
+}
+
+$(window).on('mercury:ready', function () {
+    // find all data-snippet attributes on page
+    snippet_data_attributes = $('*').filter(function () {
+        return $(this).data('snippet') !== undefined;
+    });
+    snippet_data_attributes.each(function () {
+        // to add snippets we need something like this
+        //    snippet_0: {name: "no_options"},
+        //    snippet_1: {name: "test", options: {"first_name": "jon", "favorite_beer": "beer"}},
+        var snippet_name = $(this).data('snippet');
+        var jsonVariable = {};
+        // we only have the name, we need the options also
+        $.get("/mercury/snippets/" + snippet_name + "/parameters", function (data) {
+            jsonVariable[snippet_name] = data[1];
+            Mercury.Snippet.load(jsonVariable);
+        });
+    });
+});
+
+function addSnippet(snippet) {
+    customSnippets.push(snippet);
 }
 
 // append the desired size to the url parameters. This is used by mercury :image snippets.
