@@ -1,6 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.22'
+gem 'rails'
+
+gem 'protected_attributes' # https://github.com/rails/protected_attributes
+gem 'activeresource' # https://github.com/rails/activeresource
+gem 'actionpack-action_caching' # https://github.com/rails/actionpack-action_caching
+gem 'activerecord-session_store' # https://github.com/rails/activerecord-session_store
+gem 'rails-observers' # https://github.com/rails/rails-observers
+gem 'activerecord-deprecated_finders'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,7 +20,7 @@ gem 'puma'
 # use "rails g rename:app_to New-Name" (remember the Upper-Case-Naming-Convention)
 gem 'rename'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 # Slug for Url
 # https://github.com/norman/friendly_id
@@ -28,14 +35,14 @@ gem 'simple-navigation-bootstrap'
 # https://github.com/lassebunk/gretel
 gem 'gretel'
 
-gem 'mercury-rails', git: 'git://github.com/mediatainment/mercury'
+gem 'mercury-rails', path: '/Users/jan/RubymineProjects/gems/mercury' #git: 'git://github.com/mediatainment/mercury'
 gem 'jquery-migrate-rails' # is needed for mercury-rails (js console error)
 gem 'ckeditor'
 gem 'dropzonejs-rails' # drag and drop for mercury snippets and images
 
 # Multilingual / Translation
 # https://github.com/globalize/globalize
-gem 'globalize', '~> 3.1.0'
+gem 'globalize', '~> 5.0.0'
 
 # Authentication System
 # https://github.com/plataformatec/devise
@@ -65,19 +72,18 @@ gem 'rest_in_place'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'jquery-rails'
-  gem 'sass-rails'
-  gem 'compass-rails'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'bootstrap-sass', '~> 3.3.4'
-  gem 'bootstrap-form', '~> 3.0.0'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+gem 'jquery-rails'
+gem 'sass-rails'
+gem 'compass-rails'
+gem 'coffee-rails'
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'bootstrap-form'
 
-  gem 'uglifier', '>= 1.0.3'
-end
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
+
+gem 'uglifier', '>= 1.0.3'
 
 group :development do
   # create .env file in project root and load variables

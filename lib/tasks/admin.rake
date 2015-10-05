@@ -12,7 +12,7 @@ namespace :admin do
                        email: "admin@admin.com",
                        password: "asdfasdf1"
 
-      Role.find_or_create_by_slug('admin', name: 'admin')
+      Role.where(slug: 'admin', name: 'admin').first_or_create
 
       admin.roles << Role.where(slug: "admin").first
       admin.save!
